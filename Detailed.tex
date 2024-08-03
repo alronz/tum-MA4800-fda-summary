@@ -1,0 +1,3635 @@
+
+    \documentclass{article}
+    \usepackage{amsmath}
+    \usepackage{enumitem}
+    \usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{tikz}
+\geometry{a4paper, margin=1in}
+    \begin{document}
+    
+
+
+
+
+
+
+\begin{itemize}[leftmargin=*]
+    \item Transpose: \( (A^T)_{ji} = A_{ij} \)
+    \item Symmetric Matrix: \( A^T = A \)
+    \item Hermitian Matrix: \( A^H = A \)
+    \item Matrix Multiplication:
+    \begin{itemize}[leftmargin=*]
+        \item \( (Ax)_i = \sum_{j \in J} a_{ij}x_j \)
+        \item \( (AB)_{il} = \sum_{j \in J} A_{ij}B_{jl} \)
+    \end{itemize}
+    \item Kronecker Delta: \( \delta_{ij} \) is 1 if \( i = j \), 0 otherwise.
+    \item Identity Matrix: Diagonal elements are 1, others are 0.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\[
+\text{range}(A) = \{Ax : x \in \mathbb{K}^J\} = \text{span}\{A_j : j \in J\}.
+\]
+
+
+
+
+
+
+
+
+
+
+\title{Mathematical Concepts}
+\author{}
+\date{}
+
+
+
+\maketitle
+
+\section*{Range of a Matrix}
+\begin{itemize}
+    \item \textbf{Definition:} Span of columns of \( A \).
+    \item \textbf{Notation:} \( \text{range}(A) = \text{span}\{A(j) \mid j \in J\} \).
+\end{itemize}
+
+\section*{Euclidean Scalar Product}
+\begin{itemize}
+    \item \textbf{Scalar Product:} \( \langle x, y \rangle = \sum_{i \in I} x_i y_i \).
+    \item \textbf{For \( K = \mathbb{R} \):} Ignore conjugate.
+\end{itemize}
+
+\section*{Matrix-Vector and Matrix-Matrix Multiplications}
+\begin{itemize}
+    \item \textbf{Matrix-Vector:} \( (Ax)_i = \langle A(i), x \rangle \).
+    \item \textbf{Matrix-Matrix:} \( (AB)_{i\ell} = \langle A(i), B(\ell) \rangle \).
+\end{itemize}
+
+\section*{Orthogonality}
+\begin{itemize}
+    \item \textbf{Orthogonal Vectors:} \( \langle x, y \rangle = 0 \).
+    \item \textbf{Orthogonal Sets:} \( \langle x, y \rangle = 0 \) for all \( x \in X, y \in Y \).
+    \item \textbf{Orthogonal Family:} \( \langle x_\nu, x_{\nu'} \rangle = 0 \) for \( \nu \neq \nu' \).
+    \item \textbf{Orthonormal Family:} \( \langle x_\nu, x_\nu \rangle = 1 \).
+\end{itemize}
+
+\section*{Orthogonal and Unitary Matrices}
+\begin{itemize}
+    \item \textbf{Orthogonal Matrix:} \( A^H A = I \).
+    \item \textbf{Unitary Matrix:} \( A^H A = AA^H = I, A^H = A^{-1} \).
+\end{itemize}
+
+\section*{Diagonal Matrix}
+\begin{itemize}
+    \item \textbf{Diagonal Matrix:} \( A_{ij} = 0 \) for \( i \neq j \).
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+\begin{itemize}[left=0pt]
+    \item \textbf{Orthogonality of Subspaces:} \( X \perp Y \) if every vector in \( X \) is orthogonal to every vector in \( Y \).
+    
+    \item \textbf{Checking with Bases:} \( X \perp Y \) if and only if \( \langle v_i, w_j \rangle = 0 \) for all basis vectors \( v_i \) of \( X \) and \( w_j \) of \( Y \).
+\end{itemize}
+
+\begin{itemize}[left=0pt]
+    \item \textbf{Square Matrix:} A matrix with the same number of rows and columns, \( n \times n \).
+    
+    \item \textbf{Diagonal Elements:} Elements \( a_{ii} \) where the row index equals the column index.
+    
+    \item \textbf{Types of Square Matrices:}
+    \begin{itemize}[left=0pt]
+        \item Identity Matrix: Diagonal elements are 1, off-diagonal elements are 0.
+        \item Diagonal Matrix: Only diagonal elements are non-zero.
+        \item Symmetric Matrix: \( A = A^T \).
+        \item Skew-Symmetric Matrix: \( A = -A^T \).
+    \end{itemize}
+\end{itemize}
+
+\textbf{Matrix Rank \( r \):}
+\begin{enumerate}
+    \item \( r = \dim \text{range}(A) \) (dimension of column space)
+    \item \( r = \dim \text{range}(A^H) \) (dimension of row space)
+    \item \( r \) is the maximal number of linearly independent rows.
+    \item \( r \) is the maximal number of linearly independent columns.
+    \item \( r \) is minimal such that \( A = \sum_{i=1}^r a_i b_i^H \).
+    \item \( r \) is maximal such that there exists an invertible \( r \times r \) submatrix.
+    \item \( r \) is the number of positive singular values.
+\end{enumerate}
+
+\begin{itemize}[left=0pt]
+    \item \textbf{Invertible Submatrix:} A submatrix is invertible if its determinant is non-zero.
+    \item \textbf{Rank:} The rank of a matrix is the size of the largest invertible submatrix.
+    \item \textbf{Example:} For matrix \( A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix} \), the largest invertible submatrix is \( 2 \times 2 \), so the rank is 2.
+\end{itemize}
+
+
+
+
+\section*{Matrix Determinants}
+
+\subsection*{2x2 Matrix:} 
+\[
+\det(A) = ad - bc
+\]
+
+\subsection*{3x3 Matrix:} 
+\[
+\det(A) = a(ei - fh) - b(di - fg) + c(dh - eg)
+\]
+
+\subsection*{Larger Matrices:}
+\begin{itemize}
+    \item \textbf{Cofactor Expansion:} Expand along a row or column.
+    \item \textbf{Row Reduction:} Reduce to upper triangular form and multiply the diagonal elements.
+\end{itemize}
+
+\subsection*{Example: Determinant of a 4x4 Matrix Using Row Reduction}
+
+Consider a 4 $\times$ 4 matrix:
+\[
+A = \begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & 1 & 2 & 3 \\
+0 & 0 & 1 & 2 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+\]
+This matrix is already in upper triangular form (all elements below the main diagonal are zero). The determinant is the product of the diagonal elements:
+\[
+\det(A) = 1 \cdot 1 \cdot 1 \cdot 1 = 1
+\]
+
+\section*{Inner and Outer Products}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Feature} & \textbf{Inner Product} & \textbf{Outer Product} \\
+\hline
+Definition & $\langle x, y \rangle = x^Ty$ & $x \otimes y = xy^T$ \\
+\hline
+Result & Scalar & Matrix \\
+\hline
+Size & Single value & $m \times n$ matrix for $x \in \mathbb{R}^m, y \in \mathbb{R}^n$ \\
+\hline
+Symmetry & Symmetric ($\langle x, y \rangle = \langle y, x \rangle$) & Generally asymmetric ($xy^T \neq yx^T$) \\
+\hline
+Applications & Measuring similarity, orthogonality, projections & Constructing rank-1 matrices, tensor products, matrix decompositions \\
+\hline
+Example Calculation & $\left\langle \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}, \begin{pmatrix} 4 \\ 5 \\ 6 \end{pmatrix} \right\rangle = 32$ & $\begin{pmatrix} 1 \\ 2 \end{pmatrix} \otimes \begin{pmatrix} 3 \\ 4 \end{pmatrix} = \begin{pmatrix} 3 \\ 4 \\ 6 \\ 8 \end{pmatrix}$ \\
+\hline
+\end{tabular}
+
+Outer product is also called the tensor product.
+
+
+\section{Maximal Rank (Full-Rank Matrix):}
+\begin{itemize}
+    \item Definition: $r_{\text{max}} = \min(m, n)$
+    \item Full-Rank: Matrix with rank $r_{\text{max}}$
+\end{itemize}
+
+\section{Field Independence:}
+\begin{itemize}
+    \item Real and Complex: Rank of a real-valued matrix is the same over $\mathbb{R}$ and $\mathbb{C}$
+\end{itemize}
+
+\section{Matrices of Bounded Rank $k$:}
+\begin{itemize}
+    \item Set $R_k: R_k = \{ A \in K^{I \times J} : \text{rank}(A) \leq k \}$
+    \item Non-Vector Space: Addition or scaling can result in higher rank matrices
+\end{itemize}
+
+\section{Abstract Vector Space $V$:}
+\begin{itemize}
+    \item $V$ over a field $K$
+    \item Example: Euclidean plane $\mathbb{R}^2$
+\end{itemize}
+
+\section{Norm $\| \cdot \| : V \to [0, \infty)$:}
+\begin{itemize}
+    \item Properties:
+    \begin{enumerate}
+        \item Non-negativity and Definiteness: $\|v\| = 0$ if and only if $v = 0$
+        \item Homogeneity: $\|\lambda v\| = |\lambda|\|v\|$
+        \item Triangle Inequality: $\|v + w\| \leq \|v\| + \|w\|$
+    \end{enumerate}
+\end{itemize}
+
+\section{Continuity:}
+\begin{itemize}
+    \item Inverse Triangle Inequality: $\| \|v\| - \|w\| \leq \|v - w\|$
+\end{itemize}
+
+\section{Normed Vector Space $(V, \| \cdot \|)$:}
+\begin{itemize}
+    \item A vector space $V$ with a norm.
+    \item Example: $\mathbb{R}^2$ with Euclidean norm.
+\end{itemize}
+
+
+\section{Pre-Hilbert Space:}
+\begin{itemize}
+    \item A normed vector space $(V, \|\cdot\|)$ where the norm is derived from a scalar product.
+\end{itemize}
+
+\section{Scalar Product Properties:}
+\begin{itemize}
+    \item \textbf{Positivity:} $\langle v, v \rangle > 0$ for $v \neq 0$
+    \item \textbf{Symmetry:} $\langle v, w \rangle = \langle w, v \rangle$
+    \item \textbf{Linearity in First Argument:} $\langle u + \lambda v, w \rangle = \langle u, w \rangle + \lambda \langle v, w \rangle$
+    \item \textbf{Linearity in Second Argument:} $\langle w, u + \lambda v \rangle = \langle w, u \rangle + \lambda \langle w, v \rangle$
+\end{itemize}
+
+\section{Norm from Scalar Product:}
+\begin{itemize}
+    \item $\|v\| = \sqrt{\langle v, v \rangle}$
+\end{itemize}
+
+\section{Schwarz Inequality:}
+\begin{itemize}
+    \item $|\langle v, w \rangle| \leq \|v\| \|w\|$
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\section{Pre-Hilbert Space:}
+\begin{itemize}
+    \item Pair $\left( V, \langle \cdot, \cdot \rangle \right)$
+    \item Equipped with a scalar product.
+\end{itemize}
+
+\section{Scalar Product Properties:}
+\begin{itemize}
+    \item Positivity: $\langle v, v \rangle > 0 \text{ for } v \neq 0$
+    \item Symmetry: $\langle v, w \rangle = \langle w, v \rangle$
+    \item Linearity:
+    \[
+    \langle \alpha u + \beta v, w \rangle = \alpha \langle u, w \rangle + \beta \langle v, w \rangle
+    \]
+\end{itemize}
+
+\section{Euclidean Norm:}
+\begin{itemize}
+    \item Defined by:
+    \[
+    \|v\|_2 = \sqrt{\sum_{i \in I} |v_i|^2}
+    \]
+\end{itemize}
+
+\section{Orthogonality:}
+\begin{itemize}
+    \item Orthogonal Vectors: $\langle v, w \rangle = 0$
+    \item Orthogonal Set: $\langle v_i, v_j \rangle = 0 \text{ for } i \neq j$
+    \item Orthonormal Set: $\|v_i\| = 1 \text{ and } \langle v_i, v_j \rangle = 0 \text{ for } i \neq j$
+\end{itemize}
+
+
+
+
+\section{Hilbert Space:}
+\begin{itemize}
+    \item A complete normed vector space with an inner product.
+\end{itemize}
+
+\section{Pre-Hilbert Space:}
+\begin{itemize}
+    \item A vector space $(V, \langle \cdot, \cdot \rangle)$ with an inner product.
+\end{itemize}
+
+\section{Completeness:}
+\begin{itemize}
+    \item Every Cauchy sequence in $V$ converges to a limit in $V$.
+\end{itemize}
+
+\section{Cauchy Sequence:}
+\begin{itemize}
+    \item A sequence $\{v_n\}$ where $\|v_n - v_m\|$ becomes arbitrarily small for sufficiently large $n$ and $m$.
+\end{itemize}
+
+\section{Finite Dimensional Spaces:}
+\begin{itemize}
+    \item Always complete, hence always Hilbert spaces.
+\end{itemize}
+
+\section{Convex Set:}
+\begin{itemize}
+    \item $C$ is convex if $tv + (1 - t)w \in C$ for all $v, w \in C$ and $t \in [0, 1]$.
+\end{itemize}
+
+\section{Projection $P_C(v)$:}
+\begin{itemize}
+    \item $P_C(v) = \arg \min_{w \in C} \|v - w\|$
+    \item Unique and well-posed.
+\end{itemize}
+
+\section{Equivalent Definition:}
+\begin{itemize}
+    \item $\langle z - P_C(v), v - P_C(v) \rangle \leq 0$ for all $z \in C$.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+\section{Projection onto Subspace \( W \):}
+\begin{itemize}
+    \item If \( W \) has an orthonormal basis \( \{ w_\nu \}_{\nu \in F} \):
+    \[
+    P_W(v) = \sum_{\nu \in F} \langle v, w_\nu \rangle w_\nu,
+    \]
+\end{itemize}
+
+\section{Pythagoras-Fourier Theorem:}
+\begin{itemize}
+    \item For \( v \in V \):
+    \[
+    \| P_W(v) \|^2 = \sum_{\nu \in F} |\langle v, w_\nu \rangle|^2.
+    \]
+\end{itemize}
+
+\section{Example Calculation:}
+\begin{itemize}
+    \item Given \( v = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} \) and \( W \) spanned by \( \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \right\} \):
+    \[
+    P_W(v) = \begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix}
+    \]
+    \[
+    \| P_W(v) \|^2 = 5
+    \]
+    \[
+    \sum_{\nu \in \{1,2\}} |\langle v, w_\nu \rangle|^2 = 5.
+    \]
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\section{Orthonormal Basis:}
+\begin{itemize}
+    \item $\{ w_\nu \}_{\nu \in F}$ such that $\langle w_\nu, w_\mu \rangle = \delta_{\mu \nu}$ and $\| w_\nu \| = 1$.
+\end{itemize}
+
+\section{Projection Operator $P_V$:}
+\begin{itemize}
+    \item $P_V(v) = v$ when $W = V$.
+\end{itemize}
+
+\section{Orthonormal Expansion:}
+\begin{itemize}
+    \item $v = \sum_{\nu \in F} \langle v, w_\nu \rangle w_\nu$.
+\end{itemize}
+
+\section{Pythagoras-Fourier Theorem:}
+\begin{itemize}
+    \item $\| v \|^2 = \sum_{\nu \in F} |\langle v, w_\nu \rangle|^2$.
+\end{itemize}
+
+\section{Example in $\mathbb{R}^3$:}
+\begin{itemize}
+    \item Vector $v = \begin{pmatrix} 2 \\ 3 \\ 4 \end{pmatrix}$.
+    \item Orthonormal basis $\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \}$.
+    \item Orthonormal expansion $v = 2 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + 3 \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + 4 \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$.
+    \item Norm equivalence $\| v \|^2 = 29$.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Trace Definition:}
+\begin{itemize}
+    \item For $A \in K^{I \times I}$:
+    \[
+    \text{tr}(A) = \sum_{i \in I} A_{ii}
+    \end{itemize}
+    
+\section{Example Calculation:}
+\begin{itemize}
+    \item For $A = \begin{pmatrix}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9
+    \end{pmatrix}$:
+    \[
+    \text{tr}(A) = 1 + 5 + 9 = 15
+    \]
+\end{itemize}
+
+\section{Properties:}
+\begin{itemize}
+    \item Linearity: $\text{tr}(\alpha A + \beta B) = \alpha \text{tr}(A) + \beta \text{tr}(B)$
+    \item Cyclic Property: $\text{tr}(AB) = \text{tr}(BA)$
+    \item Invariance under Similarity: $\text{tr}(A) = \text{tr}(PBP^{-1})$
+    \item Sum of Eigenvalues: $\text{tr}(A) = \sum_{i=1}^{n} \lambda_i$
+\end{itemize}
+
+
+
+
+\section{Matrix Decomposition:}
+
+\begin{itemize}
+    \item A matrix $A$ of rank $r$ can be decomposed as:
+    \[
+    A = \sum_{i=1}^{r} a_i b_i^T
+    \]
+    \item Where $a_i \in \mathbb{R}^N$ and $b_i \in \mathbb{R}^M$.
+\end{itemize}
+
+\section{Storage Requirements:}
+
+\begin{itemize}
+    \item Direct Storage: $N \times M$ entries.
+    \item Decomposition Storage: $r(N + M)$ entries.
+\end{itemize}
+
+\section{Efficiency for Low-Rank Matrices:}
+
+\begin{itemize}
+    \item When $r \ll \min(N, M)$, storing the decomposition is much more efficient than storing the entire matrix.
+\end{itemize}
+
+\section*{Example:}
+
+Consider a matrix $A$ of size $1000 \times 500$ with rank $r = 10$:
+
+\begin{itemize}
+    \item Direct Storage:
+    \begin{itemize}
+        \item $1000 \times 500 = 500,000$ entries.
+    \end{itemize}
+    
+    \item Decomposition Storage:
+    \begin{itemize}
+        \item $r(N + M) = 10(1000 + 500) = 15,000$ entries.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\section*{Frobenius Norm \( \| A \|_F \)}
+
+\begin{itemize}
+    \item \textbf{Definition:}
+    \[
+    \| A \|_F = \sqrt{\sum_{i \in I} \sum_{j \in J} |A_{ij}|^2}
+    \]
+
+    \item \textbf{Alternative Names:}
+    \begin{itemize}
+        \item Schur norm
+        \item Hilbert-Schmidt norm
+    \end{itemize}
+
+    \item \textbf{Scalar Product:}
+    \[
+    \langle A, B \rangle_F = \sum_{i \in I} \sum_{j \in J} A_{ij} B_{ij}
+    \]
+    \[
+    \langle A, B \rangle_F = \text{tr}(AB^H) = \text{tr}(B^H A)
+    \]
+
+    \item \textbf{Property:}
+    \[
+    \| A \|_F^2 = \text{tr}(AA^H) = \text{tr}(A^H A)
+    \]
+\end{itemize}
+
+
+
+
+\section*{Matrix Norm}
+
+\subsection*{Definition:}
+\[
+\|A\| = \|A\|_{X \rightarrow Y} = \sup_{z \neq 0} \frac{\|Az\|_Y}{\|z\|_X}
+\]
+\(\|\cdot\|_X\) and \(\|\cdot\|_Y\) are vector norms on spaces \(X = \mathcal{K}^I\) and \(Y = \mathcal{K}^J\).
+
+\subsection*{Spectral Norm (\(\|A\|_2\) or \(\|A\|\))}
+\subsubsection*{Definition (for Euclidean norms):}
+\[
+\|A\|_2 = \sup_{z \neq 0} \frac{\|Az\|_2}{\|z\|_2}
+\]
+
+\subsubsection*{Key Points:}
+\begin{itemize}
+    \item The spectral norm is derived from Euclidean vector norms.
+    \item It is crucial in many applications and often denoted simply by \(\|A\|\).
+\end{itemize}
+
+\subsection*{Summary of Terms}
+\begin{itemize}
+    \item Supremum (sup): The least upper bound of a set.
+    \item Euclidean Norm (\(\|\cdot\|_2\)): The standard norm in Euclidean space, also known as the \(L^2\) norm.
+\end{itemize}
+
+\section*{Unitary Invariance}
+\subsection*{Unitary Matrix:} A matrix \(U\) is unitary if \(U^HU = I\), where \(U^H\) is the conjugate transpose of \(U\).
+
+\subsection*{Frobenius Norm:}
+\[
+\|A\|_F = \|UAV^H\|_F
+\]
+
+\subsection*{Spectral Norm:}
+\[
+\|A\|_2 = \|UAV^H\|_2
+\]
+
+\section*{Submultiplicativity}
+\subsection*{Frobenius Norm:}
+\[
+\|AB\|_F \leq \|A\|_F \|B\|_F \leq \|A\|_F \|B\|_F
+\]
+
+\subsection*{Spectral Norm:}
+\[
+\|AB\| \leq \|A\| \|B\|
+\]
+
+
+\section*{Components of SVD}
+\begin{itemize}
+    \item \textbf{Orthogonal Matrices \( U \) and \( V \)}:
+    \begin{itemize}
+        \item \( U^H U = I \) and \( V^H V = I \)
+        \item Columns of \( U \) and \( V \) are orthonormal vectors.
+    \end{itemize}
+
+    \item \textbf{Diagonal Matrix \( \Sigma \)}:
+    \begin{itemize}
+        \item Contains singular values \( \sigma_1, \sigma_2, \ldots, \sigma_r \) (where \( r \) is the rank of \( A \)) on the diagonal.
+        \item Singular values are non-negative and sorted in descending order.
+    \end{itemize}
+\end{itemize}
+
+\section*{Properties and Uses}
+\begin{itemize}
+    \item \textbf{Orthogonality}: \( U \) and \( V \) preserve Euclidean norm.
+    \item \textbf{Data Compression}: Truncate small singular values for matrix approximation.
+    \item \textbf{Principal Component Analysis (PCA)}: Used to find principal components that capture the most variance in data.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\section*{First Singular Vector \( \mathbf{v_1} \)}
+
+\begin{itemize}
+    \item \textbf{Definition:}
+    \[
+    \mathbf{v_1} = \arg \max_{\|\mathbf{v}\|_1=1} \|A\mathbf{v}\|_2
+    \]
+    \begin{itemize}
+        \item \( \mathbf{v_1} \) is the column vector representing the best-fit line through the origin.
+        \item The rows of \( A \) are points in \( d \)-dimensional space.
+    \end{itemize}
+\end{itemize}
+
+\section*{First Singular Value \( \sigma_1(A) \)}
+
+\begin{itemize}
+    \item \textbf{Definition:}
+    \[
+    \sigma_1(A) = \|A\mathbf{v_1}\|_2
+    \]
+    \item \textbf{Interpretation:}
+    \begin{itemize}
+        \item \( \sigma_1(A)^2 \) is the sum of the squares of the projections of the points onto the line determined by \( \mathbf{v_1} \).
+    \end{itemize}
+\end{itemize}
+
+\section*{Key Points}
+
+\begin{itemize}
+    \item \textbf{Best-Fit Line via SVD:}
+    \begin{itemize}
+        \item The first singular vector \( \mathbf{v_1} \) provides the direction of the best-fit line.
+        \item The first singular value \( \sigma_1(A) \) measures how well the data fits along this direction.
+    \end{itemize}
+    
+    \item \textbf{Variance Maximization:}
+    \begin{itemize}
+        \item \( \mathbf{v_1} \) maximizes the variance of the projected data.
+        \item \( \sigma_1(A) \) quantifies this maximum variance.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\section*{Singular Value Decomposition (SVD) - Extended}
+
+\subsection*{First Singular Vector $v_1$:}
+\[
+v_1 = \arg \max_{\|x\|_2=1} \|Av\|_2
+\]
+
+\subsection*{First Singular Value $\sigma_1(A)$:}
+\[
+\sigma_1(A) = \|Av_1\|_2
+\]
+
+\subsection*{Second Singular Vector $v_2$:}
+\subsubsection*{Definition:}
+\[
+v_2 = \arg \max_{\|x\|_2=1,\; \langle v_1,v_2 \rangle=0} \|Av\|_2
+\]
+
+\subsection*{Second Singular Value $\sigma_2(A)$:}
+\[
+\sigma_2(A) = \|Av_2\|_2
+\]
+
+\subsection*{General $k$-th Singular Vector $v_k$:}
+\subsubsection*{Definition:}
+\[
+v_k = \arg \max_{\|x\|_2=1,\; \langle v_1,v_2,\ldots,v_{k-1} \rangle=0} \|Av\|_2
+\]
+
+\subsection*{General $k$-th Singular Value $\sigma_k(A)$:}
+\[
+\sigma_k(A) = \|Av_k\|_2
+\]
+
+\subsection*{Stopping Criterion}
+\subsection*{Termination Condition:}
+\[
+0 = \max_{\|v\|_2=1,\; \langle v_1,v_2,\ldots,v_k \rangle=0} \|Av\|_2
+\]
+
+\subsection*{Rank $r$:} The process stops after finding $r$ singular vectors and singular values, where $r$ is the rank of $A$.
+
+
+
+
+
+
+
+
+
+
+\section*{Singular Value Decomposition (SVD) and Frobenius Norm}
+
+\begin{enumerate}[label=\textbullet]
+    \item \textbf{Row Space Spanning:}
+    \begin{itemize}
+        \item Singular vectors \( v_1, v_2, \ldots, v_r \) span the row space of \( A \).
+    \end{itemize}
+    
+    \item \textbf{Orthogonality:}
+    \begin{itemize}
+        \item \( \langle A^{(i)}, v \rangle = 0 \) for any \( v \) orthogonal to \( v_1, v_2, \ldots, v_r \).
+    \end{itemize}
+    
+    \item \textbf{Pythagoras' Theorem for Rows:}
+    \[
+    \| A^{(i)} \|_2^2 = \sum_{k=1}^{r} | \langle A^{(i)}, v_k \rangle |^2
+    \]
+    
+    \item \textbf{Summing Over All Rows:}
+    \[
+    \sum_{i \in I} \| A^{(i)} \|_2^2 = \sum_{k=1}^{r} \| A_v k \|_2^2 = \sum_{k=1}^{r} \sigma_k(A)^2
+    \]
+    
+    \item \textbf{Connection to Frobenius Norm:}
+    \[
+    \| A \|_F^2 = \sum_{i \in I} \sum_{j \in J} | A_{ij} |^2 = \sum_{k=1}^{r} \sigma_k(A)^2
+    \]
+    
+    \item \textbf{Final Result:}
+    \[
+    \| A \|_F = \sqrt{ \sum_{k=1}^{r} \sigma_k(A)^2 }
+    \]
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+\section*{Spectral Norm}
+\begin{itemize}
+    \item \textbf{Definition:}
+    \[
+    \|A\| = \sigma_1(A) = \max_{\|v\|_2=1} \|Av\|_2
+    \]
+\end{itemize}
+
+\section*{Schatten-$p$ Norms}
+\begin{itemize}
+    \item \textbf{Definition (for $1 \leq p < \infty$):}
+    \[
+    \|A\|_p = \left( \sum_{k=1}^r \sigma_k(A)^p \right)^{1/p}
+    \]
+
+    \item \textbf{Special Cases:}
+    \begin{itemize}
+        \item Frobenius Norm ($p = 2$):
+        \[
+        \|A\|_F = \left( \sum_{k=1}^r \sigma_k(A)^2 \right)^{1/2}
+        \]
+
+        \item Spectral Norm ($p = \infty$):
+        \[
+        \|A\|_\infty = \max_{k=1,\ldots,r} \sigma_k(A) = \sigma_1(A)
+        \]
+
+        \item Nuclear Norm ($p = 1$):
+        \[
+        \|A\|_* = \|A\|_1 = \sum_{k=1}^r \sigma_k(A)
+        \]
+    \end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+\noindent\textbf{\textcolor{blue}{Symmetric and Positive (Semi-)Definite Matrices}}
+
+\begin{enumerate}
+    \item \textbf{Symmetric Matrix:}
+    \begin{itemize}
+        \item A matrix $A \in \mathbb{R}^{m \times m}$ is symmetric if $A = A^T$.
+    \end{itemize}
+
+    \item \textbf{Inner Product:}
+    \begin{itemize}
+        \item For $x \in \mathbb{R}^m$, 
+        \[
+        \langle x, Ax \rangle = x^T(Ax).
+        \]
+    \end{itemize}
+
+    \item \textbf{Positive Semi-Definite Matrix:}
+    \begin{itemize}
+        \item A matrix $A$ is positive semi-definite if:
+        \[
+        \langle x, Ax \rangle \geq 0 \quad \forall x \in \mathbb{R}^m.
+        \]
+    \end{itemize}
+
+    \item \textbf{Positive Definite Matrix:}
+    \begin{itemize}
+        \item A matrix $A$ is positive definite if:
+        \[
+        \langle x, Ax \rangle > 0 \quad \forall x \in \mathbb{R}^m, \, x \neq 0.
+        \]
+    \end{itemize}
+\end{enumerate}
+
+\noindent\textbf{Key Points}
+\begin{itemize}
+    \item \textbf{Symmetric Matrices:} Have the property $A = A^T$.
+    \item \textbf{Positive Semi-Definite:} The inner product $\langle x, Ax \rangle$ is non-negative for all $x$.
+    \item \textbf{Positive Definite:} The inner product $\langle x, Ax \rangle$ is positive for all non-zero $x$.
+\end{itemize}
+
+
+
+
+\section*{Infimum and Supremum}
+
+\begin{itemize}
+    \item \textbf{Infimum (Inf):}
+    \begin{itemize}
+        \item Definition: Greatest lower bound of a set.
+        \item Not necessarily in the set.
+        \item Example: \( \inf \{ \frac{1}{x} : x \in (0, 1) \} = 1 \).
+    \end{itemize}
+    
+    \item \textbf{Supremum (Sup):}
+    \begin{itemize}
+        \item Definition: Least upper bound of a set.
+        \item Not necessarily in the set.
+        \item Example: \( \sup \{ -x^2 : x \in [-1, 2] \} = 0 \).
+    \end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Positive Definite Matrices}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Full Rank:} Always full rank \(\text{rank}(A) = n\).
+    \item \textbf{Eigenvalues:} All positive \(\lambda_i > 0\).
+    \item \textbf{Invertibility:} Always invertible (no zero eigenvalues).
+\end{itemize}
+
+\section*{Positive Semi-Definite Matrices}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Possibly Not Full Rank:} May not be full rank \(\text{rank}(A) \leq n\).
+    \item \textbf{Eigenvalues:} All non-negative \(\lambda_i \geq 0\).
+    \item \textbf{Singularity:} May be singular (zero eigenvalues possible).
+    \item \textbf{Rank and Eigenvalues:} Rank equals the number of non-zero eigenvalues.
+\end{itemize}
+
+\section*{Key Differences}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Rank:}
+    \begin{itemize}[leftmargin=*]
+        \item Positive Definite: Full rank.
+        \item Positive Semi-Definite: Can be less than full rank.
+    \end{itemize}
+    
+    \item \textbf{Invertibility:}
+    \begin{itemize}[leftmargin=*]
+        \item Positive Definite: Always invertible.
+        \item Positive Semi-Definite: May be singular.
+    \end{itemize}
+\end{itemize}
+
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{example_image.png}
+\end{center}
+
+
+
+
+\section*{Pseudo-Inverse Calculation:}
+
+\begin{enumerate}
+    \item SVD of A:
+    \[
+    A = U \Sigma V^H
+    \]
+    
+    \item Diagonal Matrix $\Sigma^{-1}$:
+    \begin{itemize}
+        \item Invert nonzero singular values $\sigma_k$ to get $\sigma_k^{-1}$.
+        \item Maintain zeros for zero singular values.
+    \end{itemize}
+    
+    \item Construct $A^+$:
+    \[
+    A^+ = V \Sigma^{-1} U^H
+    \]
+
+\end{enumerate}
+
+\textbf{Formula:}
+\[
+A^+ = \sum_{k=1}^{r} \sigma_k^{-1} v_k u_k^H
+\]
+
+
+
+
+
+
+
+
+
+\section*{Pseudo-Inverse Matrices:}
+
+\begin{enumerate}
+    \item \textbf{Condition:} $A^H A \in \mathbb{K}^{J \times J}$ is invertible.
+    \begin{itemize}
+        \item Implies $A$ has full column rank: $\text{rank}(A) = J$.
+    \end{itemize}
+    
+    \item \textbf{Pseudo-Inverse Formula:}
+    \[
+    A^+ = (A^H A)^{-1} A^H
+    \]
+
+    \item \textbf{Verification Using SVD:}
+    \begin{itemize}
+        \item SVD of $A: A = U \Sigma V^H$
+        \item Compute $A^H A: A^H A = V \Sigma^2 V^H$
+        \item Invert $A^H A: (A^H A)^{-1} = V \Sigma^{-2} V^H$
+        \item Multiply by $A^H: (A^H A)^{-1} A^H = V \Sigma^{-1} U^H = A^+
+    \end{itemize}
+    
+    \item \textbf{Fundamental Properties:}
+    \begin{itemize}
+        \item Left Inverse: $I = (A^H A)^{-1} A^H A = A^+ A$
+        \item Orthogonal Projection: $P_{\text{range}(A)} = AA^+$
+    \end{itemize}
+\end{enumerate}
+
+
+
+
+\section*{Pseudo-Inverse Matrices (Right Inverse Condition):}
+
+\begin{enumerate}
+    \item Condition: $AA^H \in \mathbb{K}^{I \times I}$ is invertible.
+    \begin{itemize}
+        \item Implies $I \leq J$ (more columns than rows).
+        \item Rank $r = I$, and rows of $A$ are linearly independent.
+    \end{itemize}
+    
+    \item Pseudo-Inverse Formula:
+    \[
+    A^+ = A^H(AA^H)^{-1}
+    \]
+
+    \item Verification Using SVD:
+    \begin{itemize}
+        \item SVD of $A$: $A = U \Sigma V^H$
+        \item Compute $AA^H$: $AA^H = U \Sigma \Sigma^H U^H$
+        \item Invert $AA^H$: $(AA^H)^{-1} = U(\Sigma \Sigma^H)^{-1}U^H$
+        \item Multiply by $A^H$: $A^H(AA^H)^{-1} = V \Sigma^{-1} U^H = A^+$
+    \end{itemize}
+    
+    \item Fundamental Properties:
+    \begin{itemize}
+        \item Right Inverse: $I = A^H(AA^H)^{-1} A = AA^+$
+        \item Orthogonal Projection: $P_{\text{range}(A^H)} = A^+ A$
+    \end{itemize}
+\end{enumerate}
+
+
+\section*{Least Squares Problems:}
+
+\subsection*{1. Overdetermined Systems $(m > n)$:}
+
+\begin{itemize}
+    \item \textbf{Problem:} More equations than unknowns; no exact solution.
+    \item \textbf{Objective:} Minimize the mismatch $\|Ax - y\|_2$.
+    \item \textbf{Solution:}
+    \begin{itemize}
+        \item Normal Equations: $A^TAx = A^Ty$
+        \item Least Squares Solution: $x = (A^TA)^{-1}A^Ty$
+        \item Using Pseudo-Inverse: $\hat{x} = A^+y$
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. Underdetermined Systems $(m < n)$:}
+
+\begin{itemize}
+    \item \textbf{Problem:} Fewer equations than unknowns; infinite solutions.
+    \item \textbf{Objective:} Find the solution with minimal Euclidean norm $\|x\|_2$.
+    \item \textbf{Solution:}
+    \begin{itemize}
+        \item Minimal Norm Solution: $x = A^+y = A^H(AA^H)^{-1}y$
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Key Concepts:}
+
+\begin{itemize}
+    \item \textbf{Overdetermined:} Approximate solution minimizing $\|Ax - y\|_2$.
+    \item \textbf{Underdetermined:} Minimal norm solution $\|x\|_2$.
+    \item \textbf{Pseudo-Inverse:} A common tool for both cases, providing a systematic way to solve these problems.
+\end{itemize}
+
+
+\section{Weyl's Bounds}
+
+\subsection{Context}
+Perturbation of eigenvalues of Hermitian matrices.
+
+\subsection{Theorem}
+\[
+\lambda_k(A) + \lambda_n(E) \leq \lambda_k(A + E) \leq \lambda_k(A) + \lambda_1(E)
+\]
+\begin{itemize}
+    \item Applies to Hermitian matrices $A$ and $E$.
+    \item The $k$-th largest eigenvalue of $A + E$ is bounded by eigenvalues of $A$ and $E$.
+\end{itemize}
+
+\subsection{Corollary}
+\[
+\lvert \sigma_k(A + E) - \sigma_k(A) \rvert \leq \lVert E \rVert
+\]
+\begin{itemize}
+    \item Applies to any matrices $A$ and $E$.
+    \item Bounds the change in singular values by the spectral norm of $E$.
+\end{itemize}
+
+\section{Mirsky's Bounds}
+
+\subsection{Context}
+Perturbation of singular values of arbitrary matrices.
+
+\subsection{Theorem}
+\[
+\sum_{k=1}^{n} \lvert \sigma_k(A + E) - \sigma_k(A) \rvert^2 \leq \lVert E \rVert_F^2
+\]
+\begin{itemize}
+    \item Applies to any matrices $A$ and $E$.
+    \item Bounds the sum of squared differences in singular values by the Frobenius norm of $E$.
+\end{itemize}
+
+\subsection{Generalization}
+\begin{itemize}
+    \item Holds for any unitarily invariant norm.
+    \item Includes Weyl's theorem as a special case.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\section*{Probability Density Function (PDF)}
+\begin{itemize}
+    \item \textbf{Definition:} A random variable $X$ has a PDF $\varphi : \mathbb{R} \to \mathbb{R}_{\geq 0}$ if 
+    \[
+    P(a < X \leq b) = \int_a^b \varphi(t) \, dt \quad \text{for all } a < b \in \mathbb{R}
+    \]
+    
+    \item \textbf{Relationship with Distribution Function:}
+    \[
+    \varphi(t) = \frac{d}{dt} F(t)
+    \]
+\end{itemize}
+
+\section*{Expectation (Mean)}
+\begin{itemize}
+    \item \textbf{Definition:}
+    \[
+    E[X] = \int_{\Omega} X(\omega) \, dP(\omega)
+    \]
+    
+    \item \textbf{With PDF:}
+    \begin{itemize}
+        \item For a function $g : \mathbb{R} \to \mathbb{R}$,
+        \[
+        E[g(X)] = \int_{-\infty}^{\infty} g(t) \varphi(t) \, dt
+        \]
+    \end{itemize}
+    
+    \item \textbf{Special Case (mean of $X$):}
+    \[
+    E[X] = \int_{-\infty}^{\infty} t \varphi(t) \, dt
+    \]
+\end{itemize}
+
+
+
+
+\section*{Moments and Absolute Moments}
+\begin{itemize}
+    \item Moments: 
+    \[
+    E[X^p] \quad \text{for } p > 0
+    \]
+    \item Absolute Moments:
+    \[
+    E[|X|^p] \quad \text{for } p > 0
+    \]
+\end{itemize}
+
+\section*{Variance}
+\begin{itemize}
+    \item Definition:
+    \[
+    Var(X) = E[(X - E[X])^2] = E[X^2] - (E[X])^2
+    \]
+\end{itemize}
+
+\section*{Lp Norm}
+\begin{itemize}
+    \item Definition:
+    \[
+    \|X\|_p = (E[|X|^p])^{1/p} \quad \text{for } 1 \leq p < \infty
+    \]
+\end{itemize}
+
+\section*{Triangle Inequality}
+\begin{itemize}
+    \item Inequality:
+    \[
+    \|X + Y\|_p \leq \|X\|_p + \|Y\|_p
+    \]
+    \item Holds for all $p$-integrable random variables $X, Y$ on $(\Omega, \Sigma, \mathcal{P})$.
+\end{itemize}
+
+\section*{Hölder's Inequality}
+\begin{itemize}
+    \item Inequality:
+    \[
+    |E[XY]| \leq \|X\|_p \|Y\|_q
+    \]
+    \item For $p, q \geq 1$ with $\frac{1}{p} + \frac{1}{q} = 1$.
+\end{itemize}
+
+
+\section*{Convergence of Random Variables}
+
+\subsection*{Definition}
+A sequence of random variables $\{X_n\}$ converges to $X$ if:
+\[
+\lim_{n \to \infty} X_n(\omega) = X(\omega) \quad \text{for all } \omega \in \Omega
+\]
+
+\subsection*{Lebesgue's Dominated Convergence Theorem (LDCT)}
+\subsection*{Statement}
+If there exists a random variable $Y$ such that $E[|Y|] < \infty$ and $|X_n| \leq |Y|$ a.s., then:
+\[
+\lim_{n \to \infty} E[X_n] = E\left[\lim_{n \to \infty} X_n\right] = E[X]
+\]
+
+\subsection*{Conditions}
+\begin{itemize}
+    \item $X_n \to X$ a.s.
+    \item There exists an integrable random variable $Y$ such that $|X_n| \leq |Y|$ a.s.
+\end{itemize}
+
+\section*{Formulation for Integrals of Sequences of Functions}
+
+\subsection*{Statement}
+If $\{f_n\}$ is a sequence of measurable functions converging pointwise to a function $f$, and there exists an integrable function $g$ such that $|f_n| \leq g$ almost everywhere, then:
+\[
+\lim_{n \to \infty} \int f_n d\mu = \int f d\mu
+\]
+
+\section*{Fubini's Theorem}
+
+\subsection*{Setup}
+Let \( f : A \times B \to \mathbb{C} \) be a measurable function.
+\begin{itemize}
+    \item $(A, \nu)$ and $(B, \mu)$ are measurable spaces with measures $\nu$ and $\mu$.
+\end{itemize}
+
+\subsection*{Condition}
+The integral of the absolute value of $f$ over $A \times B$ is finite:
+\[
+\int_{A \times B} |f(x, y)| d(\nu \times \mu)(x, y) < \infty
+\]
+
+\subsection*{Conclusion}
+The iterated integrals are equal:
+\[
+\int_A \left( \int_B f(x, y) d\mu(y) \right) d\nu(x) = \int_B \left( \int_A f(x, y) d\nu(x) \right) d\mu(y)
+\]
+
+
+\section*{Absolute Moments}
+\begin{itemize}
+    \item \textbf{Definition:} The absolute $p$-th moment of a random variable $X$ is: 
+    \[
+    E[|X|^p] \quad \text{for } p > 0
+    \]
+    \item \textbf{Proposition:}
+    \[
+    E[|X|^p] = p \int_0^{\infty} P(|X| \ge t) t^{p-1} dt
+    \]
+    \item \textbf{Usage:} Use this formula to compute the $p$-th absolute moment by integrating the tail probabilities weighted by $t^{p-1}$.
+\end{itemize}
+
+\section*{Cavalieri's Formula for Expectation}
+\begin{itemize}
+    \item \textbf{Corollary:}
+    \[
+    E[X] = \int_0^{\infty} P(X \ge t) dt - \int_0^{\infty} P(X \le -t) dt
+    \]
+    \item \textbf{Usage:} Use this formula to compute the expectation by integrating the tail probabilities of $X$ being above $t$ and below $-t$.
+\end{itemize}
+
+\section*{Tail of a Random Variable}
+\begin{itemize}
+    \item \textbf{Definition:} The tail function of a random variable $X$ is:
+    \[
+    t \mapsto P(|X| \ge t)
+    \]
+    \item Describes the probability that the absolute value of $X$ exceeds $t$.
+\end{itemize}
+
+\section*{Markov's Inequality}
+\begin{itemize}
+    \item \textbf{Statement:} For any non-negative random variable $X$ and any $t > 0$,
+    \[
+    P(|X| \ge t) \le \frac{E[|X|]}{t}
+    \]
+    \item Provides an upper bound on the tail probability using the expectation of $|X|$.
+    \item \textbf{Usefulness:}
+    \begin{itemize}
+        \item Simple and general tool for bounding probabilities.
+        \item Useful for providing rough estimates when only the mean of the distribution is known.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\section*{Inequalities and Transformations in Probability}
+
+\subsection*{Generalized Markov Inequality}
+\begin{itemize}
+    \item \textbf{Statement:} For any random variable $X$ and $p > 0$,
+    \[
+    P(|X| \ge t) = P(|X|^p \ge t^p) \le \frac{E[|X|^p]}{t^p} \quad \text{for all } t > 0
+    \]
+    \item \textbf{Usefulness:} Provides a bound on the tail probability using the $p$-th moment of $X$.
+\end{itemize}
+
+\subsection*{Chebyshev Inequality}
+\begin{itemize}
+    \item \textbf{Statement:} For any random variable $X$ with finite variance,
+    \[
+    P(|X - E[X]| \ge t) \le \frac{Var(X)}{t^2} \quad \text{for all } t > 0
+    \]
+    \item \textbf{Usefulness:} Provides a bound on the probability that $X$ deviates from its mean by at least $t$ standard deviations.
+\end{itemize}
+
+\subsection*{Exponential Markov Inequality}
+\begin{itemize}
+    \item \textbf{Statement:} For any random variable $X$ and $\theta > 0$,
+    \[
+    P(X \ge t) = P(e^{\theta X} \ge e^{\theta t}) \le e^{-\theta t} E[e^{\theta X}] \quad \text{for all } t \in \mathbb{R}
+    \]
+    \item \textbf{Usefulness:} Provides a bound on the tail probability using the moment generating function (Laplace transform) of $X$.
+\end{itemize}
+
+\subsection*{Laplace Transform (Moment Generating Function)}
+\begin{itemize}
+    \item \textbf{Definition:} The Laplace transform or moment generating function of a random variable $X$ is:
+    \[
+    M_X(\theta) = E[e^{\theta X}]
+    \]
+    \item \textbf{Properties:} Helps in deriving bounds for tail probabilities and is useful in studying the distribution of $X$.
+\end{itemize}
+
+
+
+
+\section*{Normal Distribution (Gaussian Distribution)}
+
+\begin{itemize}
+    \item \textbf{PDF:}
+    \[
+    \psi(t) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(t - \mu)^2}{2\sigma^2}\right)
+    \]
+
+    \item \(\mu\): Mean
+    \item \(\sigma^2\): Variance
+
+    \item \textbf{Properties:}
+    \begin{itemize}
+        \item Mean: \(E[X] = \mu\)
+        \item Variance: \(\text{Var}(X) = \sigma^2\)
+    \end{itemize}
+
+    \item \textbf{Notation:}
+    \[
+    X \sim N(\mu, \sigma^2)
+    \]
+\end{itemize}
+
+\section*{Standard Normal Distribution (Standard Gaussian)}
+
+\begin{itemize}
+    \item \textbf{PDF:}
+    \[
+    \phi(t) = \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{t^2}{2}\right)
+    \]
+
+    \item \textbf{Properties:}
+    \begin{itemize}
+        \item Mean: \(E[g] = 0\)
+        \item Variance: \(\text{Var}(g) = 1\)
+    \end{itemize}
+
+    \item \textbf{Notation:}
+    \[
+    g \sim N(0, 1) \quad \text{or} \quad Z \sim N(0, 1)
+    \]
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\section*{Definition of Independence}
+\begin{itemize}
+    \item \textbf{Independence:} Random variables $X_1, \ldots, X_n$ are independent if:
+    \[
+    P(X_1 \leq t_1, \ldots, X_n \leq t_n) = \prod_{\ell=1}^{n} P(X_\ell \leq t_\ell)
+    \]
+\end{itemize}
+
+\section*{Expectation of Product}
+\begin{itemize}
+    \item \textbf{Property:} For independent random variables $X_1, \ldots, X_n$,
+    \[
+    E\left[ \prod_{\ell=1}^{n} X_\ell \right] = \prod_{\ell=1}^{n} E[X_\ell]
+    \]
+\end{itemize}
+
+\section*{Joint Probability Density Function}
+\begin{itemize}
+    \item \textbf{Factorization:} If $X_1, \ldots, X_n$ have a joint PDF $\varphi$, then:
+    \[
+    \varphi(t_1, \ldots, t_n) = \varphi_1(t_1) \cdot \varphi_2(t_2) \cdots \varphi_n(t_n)
+    \]
+    \item $\varphi_\ell(t_\ell)$ are the individual PDFs of $X_\ell$.
+\end{itemize}
+
+\section*{Sum of Independent Random Variables}
+\begin{itemize}
+    \item \textbf{Definition:} If $X$ and $Y$ are independent random variables with PDFs $\varphi_X$ and $\varphi_Y$, then the PDF of $X + Y$ is given by the convolution of $\varphi_X$ and $\varphi_Y$.
+\end{itemize}
+
+\section*{Convolution}
+\begin{itemize}
+    \item \textbf{Formula:}
+    \[
+    \varphi_{X+Y}(t) = (\varphi_X * \varphi_Y)(t) = \int_{-\infty}^{\infty} \varphi_X(u) \varphi_Y(t - u) \, du
+    \]
+    \item $\varphi_X(u)$: PDF of $X$ 
+    \item $\varphi_Y(t - u)$: PDF of $Y$ shifted by $t$.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+\section*{Fubini's Theorem for Expectations}
+
+\begin{itemize}
+    \item \textbf{Setup:}
+    \begin{itemize}
+        \item $X, Y \in \mathbb{R}^n$ are independent random vectors (or variables).
+        \item $f : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ is a measurable function with:
+        \[
+        E[|f(X,Y)|] < \infty
+        \]
+    \end{itemize}
+    
+    \item \textbf{Functions:}
+    \begin{itemize}
+        \item $f_1(x) = E[f(x,Y)]$
+        \item $f_2(y) = E[f(X,y)]$
+    \end{itemize}
+    
+    \item \textbf{Measurability and Integrability:}
+    \begin{itemize}
+        \item $f_1$ and $f_2$ are measurable.
+        \item $E[|f_1(X)|] < \infty$
+        \item $E[|f_2(Y)|] < \infty$
+    \end{itemize}
+    
+    \item \textbf{Theorem:}
+    \[
+    E[|f_1(X)|] = E[|f_2(Y)|] = E[|f(X,Y)|]
+    \]
+
+    \item \textbf{Conditional Expectation:}
+    \begin{itemize}
+        \item $f_1(X) = E_Y[f(X,Y)]$
+    \end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Standard Gaussian Vector}
+\begin{itemize}
+    \item \textbf{Definition:} A vector $g \in \mathbb{R}^n$ with independent standard normal components:
+    \[
+    g_i \sim N(0, 1) \quad \text{independently for } i = 1, \ldots, n
+    \]
+\end{itemize}
+
+\section*{Multivariate Normal Distribution (Gaussian Vector)}
+\begin{itemize}
+    \item \textbf{Definition:} A vector $X \in \mathbb{R}^n$ is Gaussian if:
+    \[
+    X = A g + \mu
+    \]
+    where
+    \begin{itemize}
+        \item $g \in \mathbb{R}^k$ is a standard Gaussian vector.
+        \item $A \in \mathbb{R}^{n \times k}$ is a matrix.
+        \item $\mu \in \mathbb{R}^n$ is the mean vector.
+    \end{itemize}
+    
+    \item \textbf{Covariance Matrix:}
+    \[
+    \Sigma = A A^T = E[(X - \mu)(X - \mu)^T]
+    \]
+\end{itemize}
+
+\section*{Probability Density Function (PDF)}
+\begin{itemize}
+    \item \textbf{Non-degenerate Case ($\Sigma$ is positive definite):}
+    \[
+    \psi(x) = \frac{1}{(2\pi)^{n/2} \sqrt{\det(\Sigma)}} \exp\left(-\frac{1}{2} (x - \mu)^T \Sigma^{-1} (x - \mu)\right)
+    \]
+    
+    \item \textbf{Degenerate Case ($\Sigma$ is not invertible):}
+    \begin{itemize}
+        \item $X$ does not have a density.
+    \end{itemize}
+\end{itemize}
+
+\section*{Rotation Invariance}
+\begin{itemize}
+    \item \textbf{Property:} If $U$ is an orthogonal matrix, $U^T g$ (where $g$ is a standard Gaussian vector) has the same distribution as $g$.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\section*{Jensen's Inequality}
+
+\begin{itemize}
+    \item \textbf{For Convex Functions:} 
+    \[
+    f(E[X]) \leq E[f(X)]
+    \]
+    \item \textbf{Convex Function:} \( f(\lambda x + (1 - \lambda)y) \leq \lambda f(x) + (1 - \lambda)f(y) \) for all \( x, y \in \mathbb{R}^n \) and \( \lambda \in [0, 1]. \)
+
+    \item \textbf{For Concave Functions:} 
+    \[
+    E[f(X)] \leq f(E[X])
+    \]
+    \item \textbf{Concave Function:} \( f(\lambda x + (1 - \lambda)y) \geq \lambda f(x) + (1 - \lambda)f(y) \) for all \( x, y \in \mathbb{R}^n \) and \( \lambda \in [0, 1]. \)
+\end{itemize}
+
+\section*{1. Moment Generating Function (MGF) \( M_X(\theta) \):}
+\[
+M_X(\theta) = E[\exp(\theta X)]
+\]
+\begin{itemize}
+    \item Use this function to understand the distribution of the random variable \( X \).
+\end{itemize}
+
+\section*{2. Cumulant Generating Function (CGF) \( K_X(\theta) \):}
+\[
+K_X(\theta) = \ln(E[\exp(\theta X)])
+\]
+\begin{itemize}
+    \item The CGF is the logarithm of the MGF.
+\end{itemize}
+
+\section*{3. Cumulant Generating Function (CGF) \( C_X(\theta) \):}
+\[
+C_X(\theta) = \ln(E[\exp(\theta X)])
+\]
+
+\section*{2. Probability Bound:}
+\begin{itemize}
+    \item For independent random variables \( X_1, X_2, \ldots, X_M \) and a threshold \( t > 0 \):
+\end{itemize}
+\[
+P\left(\sum_{l=1}^{M} X_\ell \geq t\right) \leq \exp\left(\inf_{\theta > 0}\left\{-\theta t + \sum_{l=1}^{M} C_X(\theta)\right\}\right)
+\]
+
+
+
+
+\section*{Key Definitions and Theorem}
+
+\begin{enumerate}
+    \item Conditions:
+    \begin{itemize}
+        \item Independent random variables $X_1, X_2, \ldots, X_M$.
+        \item Each $X_\ell$ has $\mathbb{E}[X_\ell] = 0$.
+        \item Each $X_\ell$ is bounded by $B_\ell$ (i.e., $|X_\ell| \leq B_\ell$ almost surely).
+    \end{itemize}
+
+    \item One-Sided Bound:
+    \[
+    \mathbb{P}\left(\sum_{\ell=1}^{M} X_\ell \geq t\right) \leq \exp\left(-\frac{t^2}{2\sum_{\ell=1}^{M} B_\ell^2}\right)
+    \]
+
+    \item Two-Sided Bound:
+    \[
+    \mathbb{P}\left(\left|\sum_{\ell=1}^{M} X_\ell\right| \geq t\right) \leq 2 \exp\left(-\frac{t^2}{2\sum_{\ell=1}^{M} B_\ell^2}\right)
+    \]
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\title{Cheat Sheet for Bernstein's Inequality}
+
+\maketitle
+
+\section*{Key Definitions and Theorem}
+
+\subsection*{1. Conditions:}
+\begin{itemize}[leftmargin=*]
+    \item Independent random variables $X_1, X_2, \ldots, X_M$.
+    \item Each $X_\ell$ has $\mathbb{E}[X_\ell] = 0$.
+    \item For all integers $n \geq 2$:
+    \[
+    \mathbb{E}[|X_\ell|^n] \leq \frac{n!}{2} R^{n-2} \sigma_\ell^2
+    \]
+\end{itemize}
+
+\subsection*{2. Probability Bound:}
+\begin{itemize}[leftmargin=*]
+    \item For all $t > 0$:
+    \[
+    P\left( \left| \sum_{\ell=1}^{M} X_\ell \right| \geq t \right) \leq 2 \exp\left( -\frac{t^2}{2(\sigma^2 + Rt)} \right)
+    \]
+    \item Where $\sigma^2 = \sum_{t=1}^{M} \sigma_t^2$.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Cheat Sheet for Bernstein's Inequality for Bounded Random Variables}
+
+\subsection*{Key Definitions and Corollary}
+
+\begin{enumerate}[label=\arabic*.]
+    \item Conditions:
+    \begin{itemize}
+        \item Independent random variables $X_1, X_2, \ldots, X_M$.
+        \item Each $X_k$ has $E[X_k] = 0$.
+        \item Each $X_k$ is almost surely bounded by $K$ (i.e., $|X_k| < K$).
+        \item The second moment is bounded by $\sigma^2_k$ (i.e., $E[|X_k|^2] \leq \sigma^2_k$).
+    \end{itemize}
+    
+    \item Probability Bound:
+    \begin{itemize}
+        \item For all $t > 0$:
+        \[
+        P\left( \left| \sum_{k=1}^{M} X_k \right| \geq t \right) \leq 2 \exp\left( -\frac{t^2}{2(\sigma^2 + \frac{1}{3}K t)} \right)
+        \]
+        \item Where $\sigma^2 = \sum_{k=1}^{M} \sigma_k^2$.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Cheat Sheet for Bernstein's Inequality for Subexponential Random Variables}
+
+\subsection*{Key Definitions and Corollary}
+
+\begin{enumerate}[label=\arabic*.]
+    \item Conditions:
+    \begin{itemize}
+        \item Independent mean zero subexponential random variables $X_1, X_2, \ldots, X_M$.
+        \item Each $X_k$ satisfies $P\left( |X_k| \geq t \right) \leq \beta e^{-\kappa t}$ for all $t > 0$.
+    \end{itemize}
+    
+    \item Probability Bound:
+    \begin{itemize}
+        \item For all $t > 0$:
+        \[
+        P\left( \left| \sum_{k=1}^{M} X_k \right| \geq t \right) \leq 2 \exp\left( -\frac{(\kappa t)^2}{2(2\beta M + \kappa t)} \right)
+        \]
+    \end{itemize}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\title{Cheat Sheet for Johnson-Lindenstrauss Lemma}
+\author{}
+\date{}
+
+
+
+\maketitle
+
+\section*{Key Definitions and Theorem}
+
+\subsection*{1. Parameters:}
+\begin{itemize}
+    \item $\epsilon$: A small positive constant $(0 < \epsilon < 1)$.
+    \item $k$: Target lower dimension, satisfying:
+    \[
+    k \geq \frac{2\beta}{\epsilon^2/2 - \epsilon^3/3} \ln n
+    \]
+    for some $\beta \geq 2$.
+\end{itemize}
+
+\subsection*{2. Mapping $f: \mathbb{R}^d \to \mathbb{R}^k$:}
+\begin{itemize}
+    \item For any set $P$ of $n$ points in $\mathbb{R}^d$:
+    \[
+    (1 - \epsilon) \| v - w \|_2^2 \leq \| f(v) - f(w) \|_2^2 \leq (1 + \epsilon) \| v - w \|_2^2 \quad \text{for all } v, w \in P
+    \]
+\end{itemize}
+
+\subsection*{3. Probability:}
+\begin{itemize}
+    \item The map $f$ can be generated at random with high probability:
+    \[
+    1 - \left( n^{2 - \beta} - n^{1 - \beta} \right)
+    \]
+    \item For $\beta$ slightly larger than 2, the probability is very close to 1 for large $n$.
+\end{itemize}
+
+
+
+
+\section*{Cheat Sheet for Johnson-Lindenstrauss Lemma Using Gaussian Matrices}
+
+\subsection*{Key Definitions and Theorem}
+
+\begin{enumerate}
+    \item \textbf{Parameters}:
+    \begin{itemize}
+        \item $\epsilon$: A small positive constant $(0 < \epsilon < \frac{1}{2})$.
+        \item $k$: Target lower dimension, satisfying:
+        \[
+        k \geq \beta \epsilon^{-2} \ln n
+        \]
+        for some constant $\beta$.
+    \end{itemize}
+    
+    \item \textbf{Mapping} $f: \mathbb{R}^d \rightarrow \mathbb{R}^k$:
+    \begin{itemize}
+        \item For any set $P$ of $n$ points in $\mathbb{R}^d$:
+        \[
+        (1 - \epsilon) \|v - w\|^2_2 \leq \|f(v) - f(w)\|^2_2 \leq (1 + \epsilon) \|v - w\|^2_2 \quad \text{for all } v, w \in P
+         \]
+        \end{itemize}
+
+    \item \textbf{Probability}:
+    \begin{itemize}
+        \item The map $f$ can be generated at random with high probability:
+        \[
+        1 - \left( n^{2 - \beta(1 - \epsilon)} - n^{1 - \beta(1 - \epsilon)} \right)
+        \]
+        \item For $\beta$ sufficiently large, the probability is very close to 1 for large $n$.
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{PARALLELOGRAM LAW:}
+\[
+\|x + y\|^2_2 = 2 \|x\|^2_2 + 2 \|y\|^2_2 - \|x - y\|^2_2
+\]
+
+\[
+(x - y)^2 = 2x^2 + 2y^2 - (x + y)^2
+\]
+
+\[
+P_W(v) := \arg \min_{w \in W} \|v - w\| = \sum_{i=1}^{n} \langle v, w_i \rangle w_i
+\]
+
+
+
+
+
+
+
+
+
+\begin{equation}
+A^T A v_k = \sigma_k^2 v_k
+\end{equation}
+
+\section*{Convex Sets:}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Definition:} A set \( K \subseteq \mathbb{R}^N \) is convex if for all \( x, z \in K \) and \( t \in [0, 1]: \quad t \cdot x + (1 - t) \cdot z \in K \)
+    \item \textbf{Alternative Definition (Convex Combination):} A set \( K \subseteq \mathbb{R}^N \) is convex if for any \( x_1, \ldots, x_n \in K \) and \( t_1, \ldots, t_n \geq 0 \) with \( \sum_{j=1}^n t_j = 1: \quad \sum_{j=1}^n t_j x_j \in K \)
+\end{itemize}
+
+\section*{Convex Hull:}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Definition:} For \( T \subseteq \mathbb{R}^N \), the convex hull \( \text{conv}(T) \) is the smallest convex set containing \( T \).
+    \item \textbf{Characterization:} The convex hull consists of all convex combinations of points in \( T \):
+    \[
+    \text{conv}(T) = \left\{ \sum_{i} t_j x_j : t_j \geq 0, \sum_{j} t_j = 1, x_j \in T \right\}
+    \]
+\end{itemize}
+
+\section*{Examples of Convex Sets:}
+
+\begin{itemize}[leftmargin=*]
+    \item Subspaces
+    \item Affine spaces
+    \item Half spaces
+    \item Convex polygons
+    \item Norm balls (e.g., Euclidean balls)
+\end{itemize}
+
+\section*{Intersection Property:}
+
+\begin{itemize}[leftmargin=*]
+    \item The intersection of convex sets is convex.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Cones:}
+\begin{itemize}
+    \item \textbf{Definition:} A set $K \subseteq \mathbb{R}^N$ is a cone if for all $x \in K$ and all $t \geq 0$, $t \cdot x \in K$.
+\end{itemize}
+
+\section*{Convex Cones:}
+\begin{itemize}
+    \item \textbf{Definition:} A set $K$ is a convex cone if it is a cone and convex.
+    \item \textbf{Characterization:} For all $x,z \in K$ and $s, t \geq 0$, $s \cdot x + t \cdot z \in K$.
+\end{itemize}
+
+\section*{Dual Cones:}
+\begin{itemize}
+    \item \textbf{Definition:} For a cone $K \subseteq \mathbb{R}^N$, the dual cone $K^*$ is:
+    \[
+    K^* = \{z \in \mathbb{R}^N : \langle x, z \rangle \geq 0 \text{ for all } x \in K\}
+    \]
+\end{itemize}
+
+\section*{Properties:}
+\begin{itemize}
+    \item \textbf{Closed and Convex:} $K^*$ is always closed and convex.
+    \item \textbf{Conic Property:} $K^*$ is itself a cone.
+    \item \textbf{Self-Dual:} A cone is self-dual if $K = K^*$.
+\end{itemize}
+
+\section*{Bidual Cone:}
+\begin{itemize}
+    \item If $K$ is a closed cone, then $(K^*)^* = K$.
+\end{itemize}
+
+\section*{Inclusion Relationship:}
+\begin{itemize}
+    \item If $H \subseteq K$, then $K^* \subseteq H^*$.
+\end{itemize}
+
+
+
+
+\section*{Polar Cones}
+
+\subsection*{Definition}
+For a cone \( K \subseteq \mathbb{R}^N \), the polar cone \( K^\circ \) is:
+\[
+K^\circ = \{ z \in \mathbb{R}^N : \langle x, z \rangle \leq 0 \text{ for all } x \in K \}
+\]
+
+\subsection*{Relation to Dual Cone}
+\( K^\circ = -K^* \), where \( K^* \) is the dual cone.
+
+\section*{Conic Hull}
+
+\subsection*{Definition}
+For a set \( T \subseteq \mathbb{R}^N \), the conic hull \( \text{cone}(T) \) is the smallest convex cone containing \( T \).
+
+\subsection*{Characterization}
+\[
+\text{cone}(T) = \left\{ \sum_{j} t_j x_j : t_j \geq 0, x_j \in T \right\}
+\]
+
+\section*{Geometrical Hahn-Banach Theorem}
+
+\subsection*{Statement}
+For convex sets \( K_1, K_2 \subseteq \mathbb{R}^N \) with empty interior intersection, there exists a vector \( w \in \mathbb{R}^N \) and a scalar \( \lambda \) such that:
+\[
+K_1 \subseteq \{ x \in \mathbb{R}^N : \langle x, w \rangle \leq \lambda \}
+\]
+\[
+K_2 \subseteq \{ x \in \mathbb{R}^N : \langle x, w \rangle \geq \lambda \}
+\]
+
+\section*{Key Points}
+
+\subsection*{Hyperplane Separation}
+The theorem guarantees that two non-intersecting convex sets can be separated by a hyperplane.
+
+\subsection*{Hyperplane Definition}
+A hyperplane is defined by a normal vector \( w \in \mathbb{R}^N \) and a scalar \( \lambda \).
+
+\subsection*{Convex Set Position}
+Each convex set lies entirely on one side of the hyperplane.
+
+\section*{1. Compact Convex Set}
+
+\subsection*{Definition}
+A set is compact if it is closed and bounded.
+
+\subsection*{Property}
+For a compact convex set \( \mathcal{K} \), every point in \( \mathcal{K} \) can be written as a convex combination of its extreme points.
+
+\section*{2. Convex Hull}
+
+\subsection*{Definition}
+The convex hull of a set of points is the smallest convex set that contains all those points.
+
+\subsection*{Theorem}
+The theorem states that if you take all the extreme points of a compact convex set \( \mathcal{K} \), the convex hull of these extreme points will be \( \mathcal{K} \).
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Extended Overview Summary}
+
+\subsection*{Extended-Valued Functions:}
+
+\begin{itemize}
+    \item Functions $F : \mathbb{R}^N \to (-\infty, \infty]$.
+    \item Can take real values, $\infty$, or $-\infty$.
+\end{itemize}
+
+\subsection*{Operations and Inequalities:}
+
+\begin{align*}
+    x + \infty & = \infty \quad \text{for all } x \in \mathbb{R} \\
+    x \cdot \infty & = \infty \quad \text{for } x > 0 \\
+    x \cdot (-\infty) & = -\infty \quad \text{for } x > 0 \\
+    x & \leq \infty \quad \text{for all } x \in \mathbb{R} \\
+    -\infty & \leq x \quad \text{for all } x \in \mathbb{R}
+\end{align*}
+
+\subsection*{Domain of Extended-Valued Functions:}
+
+\begin{itemize}
+    \item Defined as $\text{dom}(F) = \{x \in \mathbb{R}^N : F(x) \neq \infty\}$.
+\end{itemize}
+
+\subsection*{Proper Function:}
+
+\begin{itemize}
+    \item A function is proper if $\text{dom}(F) \neq \emptyset$.
+\end{itemize}
+
+\subsection*{Canonical Extension:}
+
+\begin{itemize}
+    \item For $F : K \to \mathbb{R}$, extend by $F(x) = \infty$ for $x \notin K$.
+    \item The domain of the extended function is $\text{dom}(F) = K$.
+\end{itemize}
+
+\subsection*{Key Points:}
+
+\begin{itemize}
+    \item Proper functions have non-empty domains.
+    \item Canonical extension ensures the function is defined on all of $\mathbb{R}^N$ by assigning $\infty$ outside the original domain.
+\end{itemize}
+
+
+
+
+\section*{Convex Functions}
+
+\textbf{Definition:} \( F : \mathbb{R}^N \to (-\infty, \infty) \) is convex if for all \( x, z \in \mathbb{R}^N \) and \( t \in [0, 1] \):
+\[
+F(tx + (1 - t)z) \leq tF(x) + (1 - t)F(z)
+\]
+
+\subsection*{Strictly Convex Functions:}
+
+\textbf{Definition:} \( F \) is strictly convex if for all \( x \neq z \) and \( t \in (0,1) \):
+\[
+F(tx + (1 - t)z) < tF(x) + (1 - t)F(z)
+\]
+
+\subsection*{Strongly Convex Functions:}
+
+\textbf{Definition:} \( F \) is strongly convex with parameter \( \gamma > 0 \) if for all \( x, z \in \mathbb{R}^N \) and \( t \in [0, 1] \):
+\[
+F(tx + (1 - t)z) \leq tF(x) + (1 - t)F(z) - \frac{\gamma}{2}(1 - t)\|x - z\|_2^2
+\]
+
+\subsection*{Concave Functions:}
+
+\textbf{Definition:} \( F \) is concave if \( -F \) is convex.
+
+\textbf{Strictly Concave:} \( F \) is strictly concave if \( -F \) is strictly convex.
+
+\textbf{Strongly Concave:} \( F \) is strongly concave with parameter \( \gamma > 0 \) if \( -F \) is strongly convex with the same parameter.
+
+\subsection*{Key Points:}
+
+\begin{itemize}
+    \item Convex functions have a ``bowl-shaped'' graph.
+    \item Strict convexity implies a stronger condition where the function value between two points is strictly less than the weighted average.
+    \item Strong convexity introduces a quadratic term, enforcing even stronger curvature.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Convex Functions}
+
+\begin{itemize}[leftmargin=*, label={--}]
+    \item \textbf{Strongly Convex Implies Strictly Convex:}
+    \begin{itemize}
+        \item If $F$ is strongly convex, then $F$ is also strictly convex.
+    \end{itemize}
+
+    \item \textbf{Convex Domain:}
+    \begin{itemize}
+        \item The domain of a convex function $F$ is a convex set.
+        \item If $x, y$ are in the domain of $F$ and $t \in [0, 1]$, then $tx + (1 - t)y$ is also in the domain.
+    \end{itemize}
+
+    \item \textbf{Convex Function on a Subset:}
+    \begin{itemize}
+        \item For $F: K \to \mathbb{R}$ on a convex subset $K \subseteq \mathbb{R}^N$, $F$ is convex if its canonical extension to $\mathbb{R}^N$ is convex.
+        \item Canonical extension: $F(x) = \infty$ for $x \not\in K$.
+    \end{itemize}
+\end{itemize}
+
+\section*{Epigraph}
+
+\begin{itemize}[leftmargin=*, label={--}]
+    \item \textbf{Definition:}
+    \begin{itemize}
+        \item The epigraph of $F$ is $\operatorname{epi}(F) = \{(x, r) : r \geq F(x)\}$.
+    \end{itemize}
+
+    \item \textbf{Convexity and Epigraph:}
+    \begin{itemize}
+        \item $F$ is convex if and only if $\operatorname{epi}(F)$ is a convex set.
+        \item For $(x_1, r_1), (x_2, r_2) \in \operatorname{epi}(F)$ and $t \in [0, 1]$:
+        \[
+        (tx_1 + (1 - t)x_2, tr_1 + (1 - t)r_2) \in \operatorname{epi}(F)
+        \]
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\section*{Convexity and Gradient:}
+
+\begin{itemize}
+    \item \textbf{Condition:} A differentiable function $F : \mathbb{R}^N \rightarrow \mathbb{R}$ is convex if and only if:
+    \[
+    F(x) \geq F(y) + \nabla F(y)^T (x - y)
+    \]
+    \item $\nabla F(y) \equiv (\partial_1 F(y), \ldots, \partial_n F(y))^T$ is the gradient at $y$.
+\end{itemize}
+
+\section*{Strong Convexity:}
+
+\begin{itemize}
+    \item \textbf{Condition:} $F$ is strongly convex with parameter $\gamma > 0$ if and only if:
+    \[
+    F(x) \geq F(y) + \nabla F(y)^T (x - y) + \frac{\gamma}{2} \| x - y \|^2
+    \]
+\end{itemize}
+
+\section*{Twice Differentiable Functions:}
+
+\begin{itemize}
+    \item \textbf{Condition:} A twice differentiable function $F$ is convex if and only if its Hessian $\nabla^2 F(x)$ is positive semi-definite:
+    \[
+    \nabla^2 F(x) \succeq 0
+    \]
+    \item The Hessian matrix $\nabla^2 F(x)$ contains all second-order partial derivatives of $F$.
+\end{itemize}
+
+\section*{Key Points:}
+
+\begin{itemize}
+    \item \textbf{Gradient Condition:} Convexity can be checked using the gradient. If the tangent line (or hyperplane) at any point $y$ lies below the function, $F$ is convex.
+    \item \textbf{Strong Convexity:} Strong convexity includes an additional quadratic term that provides a lower bound on the curvature of $F$.
+    \item \textbf{Hessian Condition:} For twice differentiable functions, convexity can be checked by ensuring the Hessian matrix is positive semi-definite at every point.
+\end{itemize}
+
+\begin{enumerate}
+    \item Let $F, G$ be convex functions on $\mathbb{R}^N$. Then, for $\alpha, \beta \geq 0$ the function $\alpha F + \beta G$ is convex.
+    \item Let $F : \mathbb{R} \rightarrow \mathbb{R}$ be convex and nondecreasing, and $G : \mathbb{R}^N \rightarrow \mathbb{R}$ be convex. Then $H(x) = F(G(x))$ is convex.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\title{Continuity and Minimization of Convex Functions}
+\author{}
+\date{}
+
+
+\maketitle
+
+\section*{Continuity of Convex Functions:}
+
+\begin{itemize}
+    \item \textbf{Proposition:} If \( F : \mathbb{R}^N \to \mathbb{R} \) is a convex function, then \( F \) is continuous on \( \mathbb{R}^N \).
+    \item \textbf{Implication:} Convex functions do not have discontinuities within their domain.
+\end{itemize}
+
+\section*{Lower Semicontinuity:}
+
+\begin{itemize}
+    \item \textbf{Definition:} A function \( F : \mathbb{R}^N \to (-\infty, \infty] \) is lower semicontinuous if for all \( x \in \mathbb{R}^N \) and every sequence \( (x_j)_{j \in \mathbb{N}} \subset \mathbb{R}^N \) converging to \( x \):
+    \[
+    \liminf_{j \to \infty} F(x_j) \geq F(x)
+    \]
+    \item \textbf{Implication:} Lower semicontinuity ensures the function does not have upward jumps. The function value at \( x \) is a lower bound for the limit inferior of the function values at a converging sequence.
+\end{itemize}
+
+\section*{Minimization in Convex Functions:}
+
+\begin{itemize}
+    \item \textbf{Global Minimum:} A point \( x \in \mathbb{R}^N \) is a global minimum of \( F \) if:
+    \[
+    F(x) \leq F(y) \quad \text{for all } y \in \mathbb{R}^N
+    \]
+    \item \textbf{Local Minimum:} A point \( x \in \mathbb{R}^N \) is a local minimum of \( F \) if there exists \( \epsilon > 0 \) such that:
+    \[
+    F(x) \leq F(y) \quad \text{for all } y \text{ satisfying } \| x - y \|_2 \leq \epsilon
+    \]
+\end{itemize}
+
+\section*{Proposition:}
+
+\begin{enumerate}
+    \item \textbf{Local Minimum is Global Minimum:}
+    \begin{itemize}
+        \item For a convex function \( F \), any local minimum is also a global minimum.
+    \end{itemize}
+    \item \textbf{Convex Set of Minima:}
+    \begin{itemize}
+        \item The set of minima of a convex function \( F \) is convex.
+    \end{itemize}
+    \item \textbf{Unique Minimum for Strictly Convex Functions:}
+    \begin{itemize}
+        \item If \( F \) is strictly convex, the minimum is unique.
+    \end{itemize}
+\end{enumerate}
+
+
+
+
+\section*{Jointly Convex Functions}
+
+\subsection*{Definition:}
+A function \( f(x, y) \) is jointly convex if it is convex in the combined variable \( z = (x, y) \).
+
+\subsection*{Mathematical Form:}
+For any \( (x_1, y_1), (x_2, y_2) \in \mathbb{R}^n \times \mathbb{R}^m \) and \( t \in [0, 1] \):
+\[
+f(tx_1 + (1 - t)x_2, ty_1 + (1 - t)y_2) \leq tf(x_1, y_1) + (1 - t)f(x_2, y_2)
+\]
+
+\subsection*{Theorem: Partial Minimization:}
+
+\textbf{Statement:} Let \( f : \mathbb{R}^n \times \mathbb{R}^m \rightarrow (-\infty, \infty] \) be a jointly convex function. Then the function 
+\[
+g(x) = \inf_{y \in \mathbb{R}^m} f(x, y)
+\]
+is convex.
+
+\textbf{Implication:} The convexity of \( f \) in both variables ensures that minimizing over one variable retains the convexity in the other variable.
+
+
+
+
+
+
+\setlist[enumerate,1]{label=\arabic*.}
+
+
+
+\section*{Theorem:}
+
+\subsection*{Statement:}
+Let \( K \subseteq \mathbb{R}^N \) be a compact convex set, and \( F : K \to \mathbb{R} \) be a convex function. Then \( F \) attains its maximum at an extreme point of \( K \).
+
+\section*{Key Concepts:}
+
+\begin{enumerate}
+    \item \textbf{Compact Convex Set:}
+    \begin{itemize}
+        \item Compact: Closed and bounded.
+        \item Convex: Any line segment between two points in the set lies entirely within the set.
+    \end{itemize}
+
+    \item \textbf{Extreme Points:}
+    \begin{itemize}
+        \item A point \( x \in K \) is extreme if it cannot be written as a convex combination of two distinct points in \( K \).
+        \item For extreme point \( x, \ x = ty + (1-t)z \) with \( t \in (0,1) \) implies \( x = y = z \).
+    \end{itemize}
+
+    \item \textbf{Convex Function:}
+    \begin{itemize}
+        \item A function \( F \) is convex if:
+        \[
+        F(tx + (1-t)y) \leq tF(x) + (1-t)F(y)
+        \]
+        for all \( x, y \in K \) and \( t \in [0, 1] \).
+    \end{itemize}
+
+    \item \textbf{Maximum Attainment:}
+    \begin{itemize}
+        \item A convex function \( F \) on a compact convex set \( K \) attains its maximum value at an extreme point of \( K \).
+    \end{itemize}
+\end{enumerate}
+
+
+
+
+\section*{Convex Conjugate}
+
+\begin{itemize}
+    \item \textbf{Definition:} For \( F : \mathbb{R}^N \to (-\infty, \infty] \), the convex conjugate \( F^* : \mathbb{R}^N \to (-\infty, \infty] \) is defined by:
+    \[
+    F^*(y) := \sup_{x \in \mathbb{R}^N} \{ \langle x, y \rangle - F(x) \}
+    \]
+    \item \textbf{Convexity:} \( F^* \) is always a convex function, even if \( F \) is not.
+\end{itemize}
+
+\section*{Fenchel-Young Inequality}
+
+\begin{itemize}
+    \item \textbf{Statement:} For all \( x, y \in \mathbb{R}^N \):
+    \[
+    \langle x, y \rangle \leq F(x) + F^*(y)
+    \]
+\end{itemize}
+
+\section*{Key Points}
+
+\begin{itemize}
+    \item The convex conjugate transforms a function \( F \) into a new function \( F^* \) using a supremum involving a linear term.
+    \item \( F^* \) is always convex, providing useful properties for analysis and optimization.
+    \item The Fenchel-Young inequality provides a fundamental bound relating \( \langle x, y \rangle \), \( F(x) \), and \( F^*(y) \).
+\end{itemize}
+
+
+\section*{Properties of Convex Conjugate Functions:}
+
+\begin{enumerate}
+    \item \textbf{Lower Semicontinuity:}
+    \begin{itemize}
+        \item \( F^* \) is lower semicontinuous.
+    \end{itemize}
+    
+    \item \textbf{Biconjugate:}
+    \begin{itemize}
+        \item \( F^{**} \) is the largest lower semicontinuous convex function satisfying \( F^{**}(x) \leq F(x) \).
+        \item If \( F \) is convex and lower semicontinuous, then \( F = F^{**} \).
+    \end{itemize}
+    
+    \item \textbf{Scaling Argument:}
+    \begin{itemize}
+        \item For \( \tau \neq 0 \):
+        \[
+        (F_\tau)^*(y) = F^*\left(\frac{y}{\tau}\right)
+        \]
+    \end{itemize}
+    
+    \item \textbf{Scaling Function:}
+    \begin{itemize}
+        \item For \( \tau > 0 \):
+        \[
+        (\tau F)^*(y) = \tau F^*\left(\frac{y}{\tau}\right)
+        \]
+    \end{itemize}
+    
+    \item \textbf{Translation:}
+    \begin{itemize}
+        \item For \( z \in \mathbb{R}^N \):
+        \[
+        (F_z)^*(y) = \langle z, y \rangle + F^*(y)
+        \]
+    \end{itemize}
+\end{enumerate}
+
+\section*{Subdifferential and Subgradients}
+
+\begin{itemize}
+    \item \textbf{Definition:} For a convex function \( F : \mathbb{R}^N \to \mathbb{R} \) at \( x \in \mathbb{R}^N \),
+    \[
+    \partial F(x) = \{ v \in \mathbb{R}^N : F(z) - F(x) \geq \langle v, z - x \rangle \text{ for all } z \in \mathbb{R}^N \}
+    \]
+    
+    \item \textbf{Subgradient:} \( v \) is a subgradient at \( x \) if it satisfies:
+    \[
+    F(z) - F(x) \geq \langle v, z - x \rangle
+    \]
+    
+    \item \textbf{Non-emptiness:} The subdifferential \( \partial F(x) \) is always non-empty for a convex function.
+    
+    \item \textbf{Differentiable Case:} If \( F \) is differentiable at \( x \),
+    \[
+    \partial F(x) = \{ \nabla F(x) \}
+    \]
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\title{Characterization of Minimizers}
+\date{}
+
+
+
+
+\section*{Characterization of Minimizers}
+
+\begin{itemize}
+    \item \textbf{Theorem:} A vector $x$ is a minimum of a convex function $F$ if and only if:
+    \[
+    0 \in \partial F(x)
+    \]
+    
+    \item \textbf{Minimizer:} A point $x$ such that $F(x) \leq F(y)$ for all $y$ in the domain of $F$.
+    
+    \item \textbf{Subdifferential at $x$:} The set of all subgradients at $x$, denoted $\partial F(x)$.
+    
+    \item \textbf{Implication:}
+    \begin{itemize}
+        \item If $x$ is a minimizer, then $0 \in \partial F(x)$.
+        \item If $0 \in \partial F(x)$, then $x$ is a minimizer.
+    \end{itemize}
+\end{itemize}
+
+\section*{Subdifferential and Conjugation}
+
+\begin{itemize}
+    \item \textbf{Theorem:} Let $F : \mathbb{R}^N \rightarrow (-\infty, \infty]$ be a convex function, and $x, y \in \mathbb{R}^N$. The following are equivalent:
+    \begin{enumerate}[label=(\arabic*)]
+        \item $y \in \partial F(x)$
+        \item $F(x) + F^*(y) = \langle x, y \rangle$
+        \item If $F$ is lower semicontinuous, $x \in \partial F^*(y)$
+    \end{enumerate}
+    
+    \item \textbf{Convex Conjugate:}
+    \[
+    F^*(y) = \sup_{x \in \mathbb{R}^N} \left( \langle x, y \rangle - F(x) \right)
+    \]
+    
+    \item \textbf{Lower Semicontinuous:} A function $F$ is lower semicontinuous if:
+    \[
+    \liminf_{n \to \infty} F(x_n) \geq F(x) \text{ for any sequence } x_n \to x
+    \]
+    
+    \item \textbf{Consequence:}
+    \begin{itemize}
+        \item For a convex lower semicontinuous function $F$:
+        \[
+        x \in \partial F^*(y) \leftarrow \rightarrow y \in \partial F(x)
+        \]
+    \end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Proximal Mapping}
+
+\subsection*{Definition}
+For a convex function $F : \mathbb{R}^N \rightarrow (-\infty,\infty]$ and a point $z \in \mathbb{R}^N$, 
+\[
+\text{prox}_F(z) := \arg \min_{x \in \mathbb{R}^N} \left\{ F(x) + \frac{1}{2} \| x - z \|_2^2 \right\}
+\]
+
+\subsection*{Strict Convexity}
+The function $x \mapsto F(x) + \frac{1}{2} \| x - z \|_2^2$ is strictly convex, ensuring a unique minimizer.
+
+\subsection*{Special Case: Characteristic Function}
+
+\paragraph{Characteristic Function $\chi_K$:}
+\[
+\chi_K(x) = \begin{cases} 
+0 & \text{if } x \in K \\ 
+\infty & \text{if } x \notin K 
+\end{cases}
+\]
+
+\paragraph{Orthogonal Projection:}
+For the characteristic function $\chi_K$ of a convex set $K$,
+\[
+P_K(z) := \arg \min_{x \in K} \| x - z \|_2
+\]
+
+\paragraph{Subspace:}
+If $K$ is a subspace of $\mathbb{R}^N$, then $P_K$ is the usual linear orthogonal projection.
+
+\subsection*{Proximal Mapping}
+
+\paragraph{Proposition:}
+For a convex function $F : \mathbb{R}^N \rightarrow (-\infty,\infty]$,
+\[
+x = P_F(z) \text{ if and only if } z \in x + \partial F(x)
+\]
+
+\paragraph{Proximal Mapping as Inverse:}
+\[
+P_F = (I + \partial F)^{-1}
+\]
+
+\subsection*{Moreau's Identity}
+
+\paragraph{Theorem (Moreau's Identity):}
+For a lower semicontinuous convex function $F : \mathbb{R}^N \rightarrow (-\infty,\infty]$ and all $z \in \mathbb{R}^N$,
+\[
+P_F(z) + P_{F^*}(z) = z
+\]
+
+\paragraph{Implication:}
+If $P_F$ is easy to compute, then $P_{F^*}(z) = z - P_F(z)$ is also easy to compute.
+
+\subsection*{Moreau's Identity for Scaled Functions}
+
+\paragraph{Scaling:}
+For $\tau > 0$,
+\[
+P_{F, \tau}(z) + \tau P_{T^{-1}F^*} \left( \frac{z}{\tau} \right) = z
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+\title{Nonexpansiveness of Proximal Mappings}
+\author{}
+\date{}
+
+
+
+\maketitle
+
+\section*{Theorem}
+For a convex function $F : \mathbb{R}^N \rightarrow (-\infty, \infty]$, the proximal mapping $P_F$ satisfies: 
+\[
+\|P_F(z) - P_F(z')\|_2 \leq \|z - z'\|_2 \quad \text{ for all } z, z' \in \mathbb{R}^N.
+\]
+
+\textbf{Implication:} The proximal mapping $P_F$ is a contraction, meaning it does not increase the distance between points in the Euclidean norm.
+
+\section*{Optimization Problem Form}
+\begin{align*}
+\min_{x \in \mathbb{R}^N} & \quad F_0(x) \\
+\text{s.t.} & \quad Ax = y \\
+& \quad F_j(x) \leq b_j, \quad j \in \{1, \ldots, M\}
+\end{align*}
+
+\section*{Components}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Objective Function} $F_0(x)$: Function to be minimized.
+    \item \textbf{Constraint Functions} $F_j(x)$: Functions defining additional constraints.
+    \item \textbf{Equality Constraint:} $Ax = y$, where $A \in \mathbb{R}^{m \times n}$ and $y \in \mathbb{R}^m$.
+    \item \textbf{Inequality Constraints:} $F_j(x) \leq b_j$ for $j \in \{1, \ldots, M\}$.
+\end{itemize}
+
+\section*{Key Terms}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Feasible Point:} $x \in \mathbb{R}^N$ that satisfies all constraints.
+    \item \textbf{Minimizer/Optimal Point:} Feasible point $x^*$ that minimizes $F_0(x)$.
+\end{itemize}
+
+\section*{Optimal Value}
+\[
+F_0(x^*)
+\]
+
+
+
+
+
+
+
+
+
+\title{Reformulating Optimization Problems}
+\author{}
+\date{}
+
+
+\maketitle
+
+\begin{itemize}
+    \item \textbf{Original Problem:}
+    \[
+    \min_{x \in \mathbb{R}^N} F_0(x) 
+    \]
+    subject to 
+    \[
+    Ax = y, \quad F_j(x) \leq b_j, \quad j \in \{1, \ldots, M\}.
+    \]
+
+    \item \textbf{Equivalent Formulation Over Set \(\mathcal{K}\):}
+    \[
+    \min_{x \in \mathcal{K}} F_0(x),
+    \]
+    where 
+    \[
+    \mathcal{K} = \{x \in \mathbb{R}^N: Ax = y \text{ and } F_j(x) \leq b_j, \forall j \in \{1, \ldots, M\}\}.
+    \]
+
+    \item \textbf{Characteristic Function \(\chi_{\mathcal{K}}(x)\):}
+    \[
+    \chi_{\mathcal{K}}(x) = 
+    \begin{cases} 
+        0 & \text{if } x \in \mathcal{K} \\ 
+        \infty & \text{if } x \notin \mathcal{K} 
+    \end{cases}
+    \]
+
+    \item \textbf{Equivalent Unconstrained Problem:}
+    \[
+    \min_{x \in \mathbb{R}^N} \left( F_0(x) + \chi_{\mathcal{K}}(x) \right).
+    \]
+\end{itemize}
+
+
+
+
+\section*{Lagrange Function}
+
+For an optimization problem:
+\[
+\min_{x \in \mathbb{R}^N} F_0(x)
+\]
+subject to
+\[
+Ax = y,
+\]
+\[
+F_j(x) \leq b_j, \quad j \in \{1, \ldots, M\},
+\]
+the Lagrange function \(L(x, \xi, \nu)\) is defined as:
+\[
+L(x, \xi, \nu) = F_0(x) + \xi^T(Ax - y) + \sum_{l=1}^M \nu_l (F_l(x) - b_l).
+\]
+
+\begin{itemize}
+    \item \(x \in \mathbb{R}^N\): Decision variables.
+    \item \(\xi \in \mathbb{R}^m\): Lagrange multipliers for equality constraints. \textcolor{red}{ It can take any real values, positive or negative}
+    \item \(\nu \in \mathbb{R}^M\): Lagrange multipliers for inequality constraints (\(\nu_l \geq 0\)).
+\end{itemize}
+
+\subsection*{Special Case: No Inequality Constraints}
+\[
+L(x, \xi) = F_0(x) + \xi^T(Ax - y).
+\]
+
+\section*{Usage}
+\begin{itemize}
+    \item Convert constrained problems into unconstrained problems.
+    \item Find critical points to identify potential optimal solutions.
+\end{itemize}
+
+
+
+
+
+\usepackage{amsthm}
+
+
+
+
+
+\section*{Lagrange Dual Function}
+
+For an optimization problem:
+\[
+\min_{x \in \mathbb{R}^N} F_0(x)
+\]
+subject to 
+\[
+Ax = y, \quad F_j(x) \leq b_j, \quad j \in \{1, \ldots, M\},
+\]
+the Lagrange dual function \(H(\xi, \nu)\) is defined as:
+\[
+H(\xi, \nu) = \inf_{x \in \mathbb{R}^N} L(x, \xi, \nu),
+\]
+where:
+\begin{itemize}
+    \item \(\xi \in \mathbb{R}^m\) (equality constraint multipliers).
+    \item \(\nu \in \mathbb{R}^M\) (inequality constraint multipliers, with \(\nu \geq 0\)).
+\end{itemize}
+
+\subsection*{Lagrange Function}
+\[
+L(x, \xi, \nu) = F_0(x) + \xi^T(Ax - y) + \sum_{l=1}^{M} \nu_l (F_l(x) - b_l).
+\]
+
+\subsection*{Special Case: No Inequality Constraints}
+\[
+H(\xi) = \inf_{x \in \mathbb{R}^N} L(x, \xi) = \inf_{x \in \mathbb{R}^N} \{ F_0(x) + \xi^T(Ax - y) \} .
+\]
+
+\subsection*{Properties}
+\begin{itemize}
+    \item \textbf{Concavity:} The dual function \(H(\xi, \nu)\) is always concave because it is the pointwise infimum of a family of affine functions, regardless of whether the original problem is convex or not.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Dual Problem}
+
+For the primal problem:
+\[
+\min_{x \in \mathbb{R}^N} F_0(x)
+\]
+subject to
+\[
+Ax = y,
+\]
+\[
+F_j(x) \leq b_j, \quad j \in \{1, \ldots, M\},
+\]
+the dual problem is defined as:
+\[
+\max H(\xi, \nu)
+\]
+subject to
+\[
+\nu \geq 0.
+\]
+
+\subsection*{Lagrange Dual Function $H(\xi, \nu)$}
+\[
+H(\xi, \nu) = \inf_{x \in \mathbb{R}^N} L(x, \xi, \nu),
+\]
+where
+\[
+L(x, \xi, \nu) = F_0(x) + \xi^T(Ax - y) + \sum_{j=1}^{M} \nu_j (F_j(x) - b_j).
+\]
+
+\subsection*{Properties}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Concavity:} The dual function $H(\xi, \nu)$ is concave.
+    \item \textbf{Dual Feasible:} $(\xi, \nu)$ is dual feasible if $\xi \in \mathbb{R}^m$ and $\nu \geq 0$.
+    \item \textbf{Dual Optimal:} $(\xi^*, \nu^*)$ maximizes $H(\xi, \nu)$.
+    \item \textbf{Primal-Dual Optimal:} $(x^*, \xi^*, \nu^*)$ where $x^*$ is optimal for the primal problem and $(\xi^*, \nu^*)$ are optimal for the dual problem.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Weak Duality}
+\begin{itemize}
+    \item \textbf{Definition:} The value of the dual function at any feasible dual solution provides a lower bound on the value of the primal objective function at any feasible primal solution.
+    \item \textbf{Formula:} \( H(\xi^{*}, \nu^{*}) \leq F_{0}(x^{*}) \)
+\end{itemize}
+
+\section*{Strong Duality}
+\begin{itemize}
+    \item \textbf{Definition:} The optimal value of the dual problem is equal to the optimal value of the primal problem.
+    \item \textbf{Formula:} \( H(\xi^{*}, \nu^{*}) = F_{0}(x^{*}) \)
+\end{itemize}
+
+\section*{Slater's Constraint Qualification Theorem}
+\begin{itemize}
+    \item \textbf{Assumption:} \( F_{0}, F_{1}, \ldots, F_{M} \) are convex functions with \( \text{dom}(F_{0}) = \mathbb{R}^{N} \).
+    \item \textbf{Condition:} There exists \( x \in \mathbb{R}^{N} \) such that:
+    \[
+    Ax = y \quad F_{i}(x) < b_{i}, \quad \forall i \in \{1, \ldots, M\}
+    \]
+    \item \textbf{Conclusion:} If the above conditions hold, then strong duality holds for the optimization problem.
+\end{itemize}
+
+\section*{Saddle-Point Interpretation}
+For the primal problem:
+\[
+\min_{x \in \mathbb{R}^{N}} F_{0}(x) \quad \text{subject to} \quad Ax = y,
+\]
+the Lagrange function is:
+\[
+L(x, \xi) = F_{0}(x) + \xi^{T}(Ax - y).
+\]
+\begin{itemize}
+    \item \textbf{Supremum:}
+    \[
+    \sup_{\xi \in \mathbb{R}^{m}} L(x, \xi) = 
+    \begin{cases} 
+        F_{0}(x) & \text{if } Ax = y \\ 
+        \infty & \text{otherwise} 
+    \end{cases}
+    \]
+    \item \textbf{Optimal Value:}
+    \[
+    F_{0}(x^{*}) = \inf_{x \in \mathbb{R}^{N}} \sup_{\xi \in \mathbb{R}^{m}} L(x, \xi).
+    \]
+\end{itemize}
+This saddle-point interpretation shows how the optimal value of the primal problem can be viewed as the balance point (saddle point) between the infimum over the primal variables and the supremum over the dual variables.
+
+
+
+
+\section*{Saddle-Point Interpretation}
+
+For the primal problem:
+\[
+\min_{x \in \mathbb{R}^N} F_0(x) 
+\]
+subject to 
+\[
+Ax = y,
+\]
+the Lagrange function is:
+\[
+L(x, \xi) = F_0(x) + \xi^T (Ax - y).
+\]
+
+\begin{itemize}
+    \item \textbf{Supremum:}
+    \[
+    \sup_{\xi \in \mathbb{R}^m} \inf_{x \in \mathbb{R}^N} L(x, \xi) \leq \inf_{x \in \mathbb{R}^N} \sup_{\xi \in \mathbb{R}^m} L(x, \xi)
+    \]
+    
+    \item \textbf{Strong Duality:}
+    \[
+    \sup_{\xi \in \mathbb{R}^m} \inf_{x \in \mathbb{R}^N} L(x, \xi) = \inf_{x \in \mathbb{R}^N} \sup_{\xi \in \mathbb{R}^m} L(x, \xi)
+    \]
+\end{itemize}
+
+\subsection*{Saddle Point Property}
+
+For a primal-dual optimal pair \((x^*, \xi^*)\):
+\[
+L(x^*, \xi) \leq L(x^*, \xi^*) \leq L(x, \xi^*)
+\]
+for all \(x \in \mathbb{R}^N\) and \(\xi \in \mathbb{R}^m\).
+
+This saddle-point interpretation shows that the optimal value of the primal problem can be viewed as the balance point (saddle point) between the infimum over the primal variables and the supremum over the dual variables.
+
+
+\section*{Gaussian Vectors}
+
+\subsection*{Independent Gaussian Variables:}
+
+\begin{enumerate}
+    \item \textbf{Definition:}
+    \begin{itemize}
+        \item $X_i \sim \mathcal{N}(\mu_i, \sigma_i^2)$ for $i = 1, \ldots, m$
+        \item $X_1, \ldots, X_m$ are independent
+    \end{itemize}
+
+    \item \textbf{Expectations:}
+    \begin{itemize}
+        \item $E[X] = \mu = (\mu_1, \ldots, \mu_m)$
+    \end{itemize}
+
+    \item \textbf{Covariance Matrix:}
+    \[
+    \text{Cov}(X) = \begin{pmatrix}
+        \sigma_1^2 & 0 & \cdots & 0 \\
+        0 & \sigma_2^2 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & \sigma_m^2
+    \end{pmatrix}
+    \]
+\end{enumerate}
+
+\subsection*{General Gaussian Vectors:}
+
+\begin{enumerate}
+    \item \textbf{Definition:}
+    \begin{itemize}
+        \item $X = (X_1, \ldots, X_m) \in \mathbb{R}^m$ Gaussian vector
+        \item $E[X] = \mu = (\mu_1, \ldots, \mu_m)$
+        \item $\text{Cov}(X) = \Sigma \in \mathbb{R}^{m \times m}$
+    \end{itemize}
+
+    \item \textbf{Component Distributions:}
+    \begin{itemize}
+        \item $X_i \sim \mathcal{N}(\mu_i, \Sigma_{ii})$
+    \end{itemize}
+
+    \item \textbf{Linear Combinations:}
+    \[
+    \langle \mathbf{v}, X \rangle \sim \mathcal{N}(\langle \mathbf{v}, \mu \rangle, \mathbf{v}^T \Sigma \mathbf{v})
+    \]
+\end{enumerate}
+
+
+\section*{Taylor Expansions:}
+
+\subsection*{1. First-Order Taylor Expansion:}
+For a function $f : \mathbb{R} \to \mathbb{R}$ with continuous $f$ and $f'$:
+\[
+f(x_0 + t) = f(x_0) + f'(x_0) \cdot t + o(t), \quad \text{as } t \to 0
+\]
+\begin{itemize}
+    \item $f(x_0)$: Function value at $x_0$.
+    \item $f'(x_0) \cdot t$: First-order term (derivative at $x_0$ times $t$).
+    \item $o(t)$: Error term of smaller order than $t$ as $t \to 0$.
+\end{itemize}
+
+\subsection*{2. Little-o Notation ($o(t)$):}
+Describes a function that grows slower than $t$:
+\[
+\lim_{t \to 0} \frac{o(t)}{t} = 0
+\]
+Indicates that the error term $o(t)$ becomes negligible as $t$ approaches 0.
+
+\subsection*{3. Example:}
+\[
+h_3(t) = t^2: \quad t^2 = o(t) \text{ as } t \to 0
+\]
+
+This summary covers the basic concept of Taylor expansions, the role of the first-order term, and the meaning of the error term $o(t)$, which is crucial for understanding and applying Taylor series approximations.
+
+
+\section*{Second-Order Taylor Expansion:}
+
+\begin{enumerate}
+    \item \textbf{Second-Order Expansion:}
+    \begin{itemize}
+        \item For a function $f : \mathbb{R} \to \mathbb{R}$ with continuous $f$, $f'$, and $f''$:
+        \[
+        f(x_0 + t) = f(x_0) + f'(x_0) \cdot t + \frac{1}{2} f''(x_0) \cdot t^2 + o(t^2), \quad \text{as } t \to 0
+        \]
+        \item $f(x_0)$: Function value at $x_0$.
+        \item $f'(x_0) \cdot t$: First-order term.
+        \item $\frac{1}{2} f''(x_0) \cdot t^2$: Second-order term.
+        \item $o(t^2)$: Error term of smaller order than $t^2$.
+    \end{itemize}
+    
+    \item \textbf{Error Term $o(t^2)$:}
+    \begin{itemize}
+        \item Describes a function that grows slower than $t^2$:
+        \[
+        \lim_{t \to 0} \frac{o(t^2)}{t^2} = 0
+        \]
+    \end{itemize}
+    
+    \item \textbf{Example:}
+    \begin{itemize}
+        \item For $h_2(t) = t^3$:
+        \[
+        t^3 = o(t^2) \quad \text{as } t \to 0
+        \]
+    \end{itemize}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+\title{Higher-Order Taylor Expansions}
+\author{}
+\date{}
+\maketitle
+
+\section*{Higher-Order Taylor Expansions:}
+
+\begin{enumerate}
+    \item \textbf{First-Order Taylor Expansion with Mean Value Theorem:}
+    \[
+    f(x_0 + t) = f(x_0) + f'(z) \cdot t, \quad z \in (x_0, x_0 + t)
+    \]
+
+    \item \textbf{Second-Order Taylor Expansion with Mean Value Theorem:}
+    \[
+    f(x_0 + t) = f(x_0) + f'(x_0) \cdot t + \frac{1}{2} f''(z) \cdot t^2, \quad z \in (x_0, x_0 + t)
+    \]
+
+    \item \textbf{General kth-Order Taylor Expansion:}
+    \[
+    f(x_0 + t) = f(x_0) + \sum_{i=1}^{k} \frac{f^{(i)}(x_0)}{i!} \cdot t^i + \frac{f^{(k+1)}(z)}{(k+1)!} \cdot t^{k+1}, \quad z \in (x_0, x_0 + t)
+    \]
+\end{enumerate}
+
+\section*{Multidimensional Case:}
+
+\begin{enumerate}
+    \item \textbf{First-Order Expansion in $\mathbb{R}^{m}$:}
+    \[
+    f(x_0 + ty) = f(x_0) + \nabla f(x_0) \cdot y + o(t), \quad \text{as } t \to 0
+    \]
+    \begin{itemize}
+        \item $\nabla f(x_0)$: Gradient (vector of partial derivatives).
+        \item $y \in \mathbb{R}^m$: Direction of displacement.
+        \item $t \in \mathbb{R}$: Amount of movement.
+    \end{itemize}
+
+    \item \textbf{Alternative Notation:}
+    \[
+    f(x_0 + y) = f(x_0) + \nabla f(x_0) \cdot y + o(\|y\|), \quad \text{as } \|y\| \to 0
+    \]
+
+    \item \textbf{First-Order Mean Value Theorem:}
+    \[
+    f(x_0 + y) = f(x_0) + \nabla f(z) \cdot y, \quad z \text{ is on the line segment } [x_0, x_0 + y]
+    \]
+
+    \item \textbf{Case with Scalar $t$:}
+    \[
+    f(x_0 + ty) = f(x_0) + \nabla f(z) \cdot y, \quad \text{for } z \in [x_0, x_0 + ty]
+    \]
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+\section*{Hessian Matrix:}
+
+1. Definition:
+
+\[
+\nabla^2 f(x_0) = D^2 f(x_0) = \begin{pmatrix}
+\frac{\partial^2 f(x_0)}{\partial x_1^2} & \frac{\partial^2 f(x_0)}{\partial x_1 \partial x_2} & \cdots & \frac{\partial^2 f(x_0)}{\partial x_1 \partial x_m} \\
+\frac{\partial^2 f(x_0)}{\partial x_2 \partial x_1} & \frac{\partial^2 f(x_0)}{\partial x_2^2} & \cdots & \frac{\partial^2 f(x_0)}{\partial x_2 \partial x_m} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial^2 f(x_0)}{\partial x_m \partial x_1} & \frac{\partial^2 f(x_0)}{\partial x_m \partial x_2} & \cdots & \frac{\partial^2 f(x_0)}{\partial x_m^2}
+\end{pmatrix}
+\]
+
+\begin{itemize}
+    \item The Hessian is symmetric.
+\end{itemize}
+
+\section*{Second-Order Taylor Expansion in $\mathbb{R}^m$:}
+
+1. Expansion:
+
+\[
+f(x_0 + ty) = f(x_0) + \nabla f(x_0) \cdot y + \frac{1}{2} t^2 y^T \nabla^2 f(x_0) y + o(t^2), \quad \text{as } t \to 0
+\]
+
+2. Correct Notation for Quadratic Form:
+\begin{itemize}
+    \item \( y^T \nabla^2 f(x_0) y \): Correct form.
+\end{itemize}
+
+\section*{Derivatives Along Curves:}
+
+1. First Derivative:
+\begin{itemize}
+    \item For \( g(t) = f(\gamma(t)) \):
+\[
+g'(t) = \frac{d}{dt} g(t) = \nabla f(\gamma(t)) \cdot \gamma'(t)
+\]
+\end{itemize}
+
+2. Second Derivative:
+\begin{itemize}
+    \item For \( g(t) = f(\gamma(t)) \):
+\[
+g''(t) = \frac{d^2}{dt^2} g(t) = \gamma'(t)^T \nabla^2 f(\gamma(t)) \gamma'(t) + \nabla f(\gamma(t)) \cdot \gamma''(t)
+\]
+\end{itemize}
+
+
+
+
+\section*{Lower Semi-Continuity:}
+
+\begin{enumerate}
+    \item \textbf{Definition:}
+    \begin{itemize}
+        \item A function $f : \mathbb{R}^m \to \mathbb{R}$ is lower semi-continuous if its epigraph is a closed set.
+        \item The epigraph of $f$ is:
+        \[
+        \text{epi}(f) = \{(x,y) \in \mathbb{R}^m \times \mathbb{R} : y \geq f(x)\}
+        \]
+    \end{itemize}
+    
+    \item \textbf{Geometric Interpretation:}
+    \begin{itemize}
+        \item The epigraph is the set of points lying on or above the graph of $f$.
+    \end{itemize}
+    
+    \item \textbf{Properties:}
+    \begin{itemize}
+        \item Any continuous function is lower semi-continuous.
+        \item A function can be lower semi-continuous but not continuous if the epigraph is closed even with discontinuities.
+        \item A function is not lower semi-continuous if there are gaps in the epigraph that cannot be filled.
+    \end{itemize}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+\title{Gradient Descent Cheat Sheet}
+\maketitle
+
+\section{1. Objective:} Minimize $f(x)$
+\begin{itemize}
+    \item Find $x^* = \arg \min_x f(x)$.
+\end{itemize}
+
+\section{2. Gradient:}
+\begin{itemize}
+    \item $\nabla f(x)$: Direction and rate of fastest increase.
+\end{itemize}
+
+\section{3. Update Rule:}
+\begin{itemize}
+    \item $\hat{x} = x - \alpha \nabla f(x)$
+    \item $\alpha$: Learning rate (step size).
+\end{itemize}
+
+\section{4. Time-Dependent Gradient Flow:}
+\begin{itemize}
+    \item Differential equation: $\dot{x}(t) = -\nabla f(x(t))$
+    \item Initial condition: $x(0) = x^{(0)}$
+\end{itemize}
+
+\section{5. Lipschitz Continuity:}
+\begin{itemize}
+    \item Gradient $\nabla f(x)$ is Lipschitz continuous with constant $L$:
+    \[
+    \|\nabla f(x) - \nabla f(y)\|_2 \leq L\|x - y\|_2
+    \]
+    \item If $f$ is twice differentiable:
+    \[
+    \lambda_{\max}(\nabla^2 f(x)) \leq L
+    \]
+\end{itemize}
+
+
+
+
+\section*{Gradient Descent Iteration}
+
+\begin{itemize}
+    \item \textbf{Objective:} Minimize a function $f(x)$ by iteratively moving towards the minimum.
+    
+    \item \textbf{Update Rule:}
+    \begin{equation*}
+    x^{(n+1)} = x^{(n)} - \alpha^{(n)} \nabla f(x^{(n)})
+    \end{equation*}
+
+    \item \textbf{Components:}
+    \begin{itemize}
+        \item $x^{(n)}$: Current value.
+        \item $x^{(n+1)}$: Next value.
+        \item $\alpha^{(n)}$: Step size (learning rate).
+        \item $\nabla f(x^{(n)})$: Gradient of $f$ at $x^{(n)}$.
+    \end{itemize}
+    
+    \item \textbf{Step Size ($\alpha^{(n)}$):}
+    \begin{itemize}
+        \item \textbf{Adaptive:} Changes at each iteration.
+        \item \textbf{Constant:} Fixed value, must be small enough to ensure convergence.
+    \end{itemize}
+
+    \item \textbf{Convergence:} Sequence $x^{(n)}$ should approach the minimum of $f$.
+\end{itemize}
+
+
+
+
+\section*{Convexity and Lipschitz Continuity}
+
+\subsection*{Convexity:}
+\begin{itemize}
+    \item A convex function $f$ satisfies:
+    \[
+    f(y) \geq f(x) + \nabla f(x)^{T}(y - x)
+    \]
+    \item For all $x, y \in \mathbb{R}^{d}$.
+\end{itemize}
+
+\subsection*{Lipschitz Continuity:}
+\begin{itemize}
+    \item If $\nabla f(x)$ is Lipschitz continuous with constant $L$, then:
+    \[
+    f(y) \leq f(x) + \nabla f(x)^{T}(y - x) + \frac{L}{2}\|y - x\|^{2}_{2}
+    \]
+\end{itemize}
+
+\subsection*{Theorem: Convergence of Gradient Descent}
+
+\subsubsection*{Assumptions:}
+\begin{enumerate}
+    \item $f$ is convex.
+    \item $f$ is finite for all $x$.
+    \item A finite solution $x^{*}$ exists.
+    \item $\nabla f(x)$ is Lipschitz continuous with constant $L$.
+\end{enumerate}
+
+\subsubsection*{Condition:}
+\[
+\alpha = \alpha^{(n)} \leq \frac{1}{L}
+\]
+
+\subsubsection*{Conclusion:} 
+The iteration
+\[
+x^{(n+1)} = x^{(n)} - \alpha^{(n)} \nabla f(x^{(n)})
+\]
+converges to $x^{*}$.
+
+
+\section*{Strong Convexity}
+\begin{itemize}
+    \item \textbf{Definition:} A function $f$ is strongly convex with coefficient $\gamma > 0$ if it satisfies certain conditions that make it "more curved" than a simple convex function.
+\end{itemize}
+
+\begin{enumerate}
+    \item \textbf{Gradient Condition:}
+    \[
+    f(y) \geq f(x) + \langle \nabla f(x), y - x \rangle + \frac{\gamma}{2} \|y - x\|^2_2
+    \]
+
+    \item \textbf{Gradient Difference Condition:}
+    \[
+    \langle \nabla f(x) - \nabla f(y), x - y \rangle \geq \gamma \|x - y\|^2_2
+    \]
+
+    \item \textbf{Hessian Condition:}
+    \[
+    w^T \nabla^2 f(x) w \geq \gamma \|w\|^2_2 \quad \forall x, w \in \mathbb{R}^n
+    \]
+    \begin{itemize}
+        \item Alternatively:
+        \[
+        \nabla^2 f(x) \succeq \gamma I
+        \]
+    \end{itemize}
+
+    \item \textbf{Jensen's Inequality for Strongly Convex Functions:}
+    \[
+    f(\lambda x + (1 - \lambda) y) \leq \lambda f(x) + (1 - \lambda) f(y) - \frac{\gamma}{2} \lambda(1 - \lambda) \|x - y\|^2_2
+    \]
+\end{enumerate}
+
+
+\section{Orthogonal Projections}
+
+\subsection{Definition of Projection $P_V(x)$:}
+\begin{itemize}
+    \item $P_V (x)$ is the projection of $x \in \mathbb{R}^d$ onto the subspace $V \subset \mathbb{R}^d$.
+    \item If $V = \{v_1, v_2, \ldots, v_n\}$ (orthonormal basis), then:
+    \[
+    P_V(x) = \sum_{i=1}^{n} \langle v_i, x \rangle v_i
+    \]
+\end{itemize}
+
+\subsection{Matrix Form of Projection $P_V$:}
+\begin{itemize}
+    \item $P_V$ is the operator that performs projections, given by:
+    \[
+    P_V = V V^T \in \mathbb{R}^{d \times d}
+    \]
+    \item Here, $V$ is a $d \times n$ orthogonal matrix whose columns span the subspace $V$.
+\end{itemize}
+
+\subsection{Relationship Between $P_V$ and $P_V(x)$:}
+\begin{itemize}
+    \item The matrix $P_V$ and the projection $P_V(x)$ are intimately related:
+    \[
+    P_V \cdot x = P_V(x)
+    \]
+\end{itemize}
+
+The convolution of two functions $f$ and $g$, denoted by $(f * g)$, is defined as:
+\[
+(f * g)(t) = \int_{-\infty}^{\infty} f(u)g(t - u) \, du
+\]
+
+For probability density functions (pdfs) $\phi_X$ and $\phi_Y$ of two independent random variables $X$ and $Y$, the pdf of the sum $Z = X + Y$ is given by the convolution of $\phi_X$ and $\phi_Y$:
+\[
+\phi_{X+Y}(t) = \left( \phi_X * \phi_Y \right)(t) = \int_{-\infty}^{\infty} \phi_X(u)\phi_Y(t - u) \, du
+\]
+
+
+
+
+
+
+
+
+
+
+
+\begin{itemize}
+    \item Given \( a = b + c \)
+    \item If \( c \geq 0 \), then \( a \geq b \)
+\end{itemize}
+
+\[
+\sup_{i \in I} [g_i(x) + h_i(y)] \leq \sup_{i \in I} g_i(x) + \sup_{i \in I} h_i(y).
+\]
+
+\begin{itemize}
+    \item Convexity Rule:
+\end{itemize}
+For a function \( f : \mathbb{R}^n \to (-\infty, \infty) \), \( f \) is convex if:
+\[
+f(\lambda x + (1 - \lambda)y) \leq \lambda f(x) + (1 - \lambda) f(y) \quad \text{for all } x, y \in \mathbb{R}^n \text{ and } \lambda \in [0, 1].
+\]
+
+\noindent Excercises chapter convex analysis - equations needed
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{enumerate}[1.]
+    \item \textbf{Definition of Convex Function:}
+    \[
+    f(\lambda x + (1 - \lambda)y) \leq \lambda f(x) + (1 - \lambda)f(y) \quad \forall x, y \in C, \lambda \in [0, 1]
+    \]
+    
+    \item \textbf{Gradient Inequality (First-Order Condition for Convexity):}
+    \[
+    f(x + v) \geq f(x) + \nabla f(x) \cdot v \quad \forall x, v
+    \]
+    
+    \item \textbf{Positive Semi-Definiteness of the Hessian (Second-Order Condition for Convexity):}
+    \[
+    \nabla^2 f(x) \geq 0 \quad \forall x \in C
+    \]
+    This means that for any vector \( v \),
+    \[
+    v^T \nabla^2 f(x) v \geq 0
+    \]
+    
+    \item \textbf{Taylor Expansion:}
+    For a twice continuously differentiable function \( f \) around a point \( x \),
+    \[
+    f(x + tv) = f(x) + \nabla f(x) \cdot v + \frac{t^2}{2} v^T \nabla^2 f(x) v + o(t^2)
+    \]
+    where \( t \) is a small scalar, and \( v \) is a vector.
+    
+    \item \textbf{Limit Process:}
+    When deriving inequalities from Taylor expansions, you often need to divide by \( t^2 \) and take the limit as \( t \) approaches zero:
+    \[
+    \lim_{t \to 0} \frac{o(t^2)}{t^2} = 0
+    \]
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Gaussian Distribution (N($\mu$, $\sigma^2$)):}
+
+\begin{itemize}
+    \item PDF: $f(x) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)$
+    \item MGF: $M_X(\theta) = \exp\left(\mu \theta + \frac{1}{2} \sigma^2 \theta^2\right)$
+\end{itemize}
+
+\section*{Standard Gaussian Distribution (N(0, 1)):}
+
+\begin{itemize}
+    \item PDF: $f(x) = \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{x^2}{2}\right)$
+    \item MGF: $M_X(\theta) = \exp\left(\frac{1}{2} \theta^2\right)$
+\end{itemize}
+
+\section*{Lipschitz Continuity:}
+\begin{itemize}
+    \item $|f(x) - f(y)| \leq L\|x - y\|$
+    \item Lipschitz Continuity and Derivative: $\|Df(x)\| \leq L$
+    \item Lipschitz Gradient: $\|\nabla f(x) - \nabla f(y)\| \leq L\|x - y\|$
+\end{itemize}
+
+\section*{Convex Functions with Lipschitz Gradient:}
+$$f(y) \leq f(x) + \nabla f(x)^\top (y - x) + \frac{L}{2} \|y - x\|^2$$
+
+\section*{Strong Convexity:}
+$$f(y) \geq f(x) + \nabla f(x)^\top (y - x) + \frac{\mu}{2} \|y - x\|^2$$
+
+\subsection*{Theorem:}
+If $f$ is twice continuously differentiable and the Hessian $\nabla^2 f(x)$ is bounded, then $\nabla f$ is Lipschitz continuous. Specifically,
+$$\|\nabla^2 f(x)\| \leq L \quad \forall x \in D \subset \mathbb{R}^n$$
+implies that $\nabla f$ is Lipschitz continuous with Lipschitz constant $L$.
+
+
+
+
+\section*{Hessian Norm:}
+\begin{itemize}
+    \item Use the spectral norm (largest singular value) to estimate the Lipschitz constant.
+    \[
+    \|\nabla^2 f(x)\| = \text{Largest Singular Value}
+    \]
+\end{itemize}
+Meaning only eigenvalues is also enough without doing the full SVD.
+
+\section*{Quadratic Function:}
+\[
+f(x) = x^T A x + \langle b, x \rangle + c
+\]
+
+\section*{Gradient:}
+\[
+\nabla f(x) = Ax + A^T x + b
+\]
+(For symmetric \(A\): \(\nabla f(x) = 2Ax + b\))
+
+\section*{Hessian:}
+\[
+\nabla^2 f(x) = A + A^T
+\]
+(For symmetric \(A\): \(\nabla^2 f(x) = 2A\))
+
+
+
+
+
+
+
+
+
+
+\section*{Summary}
+\begin{itemize}
+    \item \textbf{Valid Inner Product:} 
+    \[
+    \langle u, v \rangle \text{ where } u, v \in \mathbb{R}^n.
+    \]
+    
+    \item \textbf{Matrix-Vector Multiplication:} 
+    \[
+    Ax \text{ where } A \in \mathbb{R}^{m \times n} \text{ and } x \in \mathbb{R}^n.
+    \]
+    
+    \item \textbf{Quadratic Form:} 
+    \[
+    x^T A x \text{ where } A \in \mathbb{R}^{n \times n} \text{ and } x \in \mathbb{R}^n.
+    \]
+\end{itemize}
+
+\section*{Example}
+\begin{enumerate}[label=\arabic*.]
+    \item \textbf{Inner Product of Vectors:} 
+    \[
+    \langle u, v \rangle = u^T v.
+    \]
+    
+    \item \textbf{Matrix-Vector Multiplication:} 
+    \[
+    y = Ax.
+    \]
+    
+    \item \textbf{Quadratic Form:} 
+    \[
+    x^T A x = \langle Ax, x \rangle.
+    \]
+\end{enumerate}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{example-image-a}
+    \caption{Example of a remark and mathematical expressions.}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+\section*{Norms and Lipschitz Constant}
+
+\begin{itemize}[left=0pt]
+    \item $\| \cdot \|_1$ Norm:
+    \[
+    \|x\|_1 = \sum_{i=1}^{n} |x_i|
+    \]
+
+    \item $\| \cdot \|_2$ Norm:
+    \[
+    \|x\|_2 = \sqrt{\sum_{i=1}^{n} x_i^2}
+    \]
+
+    \item Lipschitz Constant Formula:
+    \[
+    L = \sup_{x \in \mathbb{R}^n} \|\nabla f(x)\|_2
+    \]
+
+    \item Steps to Compute:
+    \begin{enumerate}
+        \item Compute the gradient $\nabla f(x)$.
+        \item Evaluate the Euclidean norm $\|\nabla f(x)\|_2$.
+        \item Find the supremum over the domain.
+    \end{enumerate}
+\end{itemize}
+
+
+
+
+\section*{Gradient of Norm Functions}
+
+\subsection*{1. Gradient of the Euclidean Norm ($L_2$ Norm):}
+For the Euclidean norm $\|x\|_2 = \sqrt{x^T x}$, the gradient is:
+\[
+\nabla \|x\|_2 = \frac{x}{\|x\|_2} \text{ for } x \neq 0.
+\]
+
+\subsection*{2. Gradient of the Squared Euclidean Norm:}
+For the squared Euclidean norm $\|x\|^2_2 = x^T x$, the gradient is:
+\[
+\nabla \|x\|^2_2 = 2x.
+\]
+
+\subsection*{3. Gradient of the Manhattan Norm ($L_1$ Norm):}
+The Manhattan norm $\|x\|_1 = \sum_{i=1}^{n} |x_i|$ is not differentiable everywhere, but the subgradient can be given as:
+\[
+\partial \|x\|_1 =
+\begin{cases}
+1, & \text{if } x_i > 0, \\
+-1, & \text{if } x_i < 0, \\
+[-1, 1], & \text{if } x_i = 0.
+\end{cases}
+\]
+
+\textbf{Convergence of Gradient Descent to Minimize:} \\
+If the above rule $\gamma \leq \frac{1}{L}$ where $L$ is the Lipschitz constant of $f$, \\
+\textbf{IMPORTANT:} In the first part of the exercise, we worked with Lipschitz constant of $f$, not of $\nabla f$.
+
+
+
+
+
+
+
+
+
+\noindent\textcolor{blue}{\textbf{ALWAYS TRUE:}}\\
+\textcolor{yellow}{\((H \cdot N)^{-1} = N^{-1} \cdot H^{-1}\)}\\
+
+\vspace{1em}
+\noindent\textcolor{red}{\textbf{ORTHOGONAL MATRICES:}}\\
+\textcolor{red}{\(O^{-1} = O^{T}\)}\\
+
+\vspace{1em}
+\[
+UU^{T} = I \quad \text{for Orthonomal Matrices}
+\]
+
+
+
+
+\begin{enumerate}
+    \item Orthogonal Matrix:
+    \[
+    U^TU = I \quad \text{and} \quad UU^T = I \quad \text{and} \quad U^{-1} = U^T
+    \]
+    \item Inverse and Identity:
+    \[
+    AA^{-1} = I \quad \text{and} \quad A^{-1}A = I
+    \]
+    \item Pseudo-inverse:
+    \[
+    A^+ = (A^TA)^{-1}A^T
+    \]
+    \[
+    AA^+ = A \quad \text{and} \quad A^+A = I
+    \]
+    \[
+    (AA^+)^T = AA^+ \quad \text{and} \quad (A^A)^T = A^+A
+    \]
+    \item Symmetric Matrix:
+    \[
+    B = B^T \quad \text{and} \quad (B^{-1})^T = B^{-1}
+    \]
+    \item SVD and Inverse:
+    \[
+    B = U\Sigma V^T
+    \]
+    \[
+    B^{-1} = V\Sigma^{-1}U^T
+    \]
+    \[
+    \Sigma^{-1} = \text{diag}\left(\frac{1}{\sigma_1}, \frac{1}{\sigma_2}, \ldots, \frac{1}{\sigma_n}\right)
+    \]
+\end{enumerate}
+
+
+
+
+
+
+
+1. Original Definition for Linearly Independent Columns:
+\[
+A^+ = (A^TA)^{-1}A^T \quad (\text{sum form: } A^+ = \sum_{i=1}^{r} \frac{1}{\sigma_i} v_i u_i^T)
+\]
+
+2. New Definition for Linearly Independent Rows:
+\[
+A^+ = A^T (AA^T)^{-1} \quad (\text{sum form: } A^+ = \sum_{i=1}^{m} \frac{1}{\sigma_i} v_i u_i^T)
+\]
+
+
+
+
+    
+\end{document}

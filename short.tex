@@ -1,0 +1,571 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+\begin{document}
+
+
+\section{General}
+
+\begin{itemize}
+
+\item 
+
+$ \log_b (a^c) = c \log_b (a) $
+
+\item \textbf{Unitary Matrix:} \( A^T A = AA^T = I, A^T = A^{-1}, A^{+} = A^{-1}, A^{+} = A^T \).
+\item Homogeneity: $\|\lambda v\| = |\lambda|\|v\|$
+\item Triangle Inequality: $\|v + w\| \leq \|v\| + \|w\|$
+
+\item Inverse Triangle Inequality: $\| \|v\| - \|w\| \leq \|v - w\|$
+
+\item \textbf{Linearity in First Argument:} $\langle u + \lambda v, w \rangle = \langle u, w \rangle + \lambda \langle v, w \rangle$
+\item \textbf{Linearity in Second Argument:} $\langle w, u + \lambda v \rangle = \langle w, u \rangle + \lambda \langle w, v \rangle$
+
+\item $\|v\| = \sqrt{\langle v, v \rangle}$
+
+\item $|\langle v, w \rangle| \leq \|v\| \|w\|$
+
+ \item 
+    $ \|v\|_2 = \sqrt{\sum_{i \in I} |v_i|^2} $
+
+\item Orthonormal Set: $\|v_i\| = 1 \text{ and } \langle v_i, v_j \rangle = 0 \text{ for } i \neq j$
+
+\item \textbf{Cauchy Sequence:} is a sequence $\{v_n\}$ where $\|v_n - v_m\|$ becomes arbitrarily small for sufficiently large $n$ and $m$.
+
+\item $C$ is convex if $tv + (1 - t)w \in C$ for all $v, w \in C$ and $t \in [0, 1]$.
+
+\item $P_C(v) = \arg \min_{w \in C} \|v - w\|$
+
+\item $\langle z - P_C(v), v - P_C(v) \rangle \leq 0$ for all $z \in C$.
+
+ \item If \( W \) has an orthonormal basis \( \{ w_\nu \}_{\nu \in F} \):
+    \[
+    P_W(v) = \sum_{\nu \in F} \langle v, w_\nu \rangle w_\nu,
+    \]
+
+ \item For \( v \in V \):
+    \[
+    \| P_W(v) \|^2 = \sum_{\nu \in F} |\langle v, w_\nu \rangle|^2.
+    \]
+
+ \item $P_V(v) = v$ when $W = V$.
+
+ \item $v = \sum_{\nu \in F} \langle v, w_\nu \rangle w_\nu$.
+
+ \item $\| v \|^2 = \sum_{\nu \in F} |\langle v, w_\nu \rangle|^2$.
+
+ \item Linearity: $\text{tr}(\alpha A + \beta B) = \alpha \text{tr}(A) + \beta \text{tr}(B)$
+    \item Cyclic Property: $\text{tr}(AB) = \text{tr}(BA)$
+    \item Sum of Eigenvalues: $\text{tr}(A) = \sum_{i=1}^{n} \lambda_i$
+ 
+\item \textbf{Frobenius Norm:}
+    \[
+    \| A \|_F = \sqrt{\sum_{i \in I} \sum_{j \in J} |A_{ij}|^2}
+    \]
+
+ \item 
+    $
+    \| A \|_F^2 = \text{tr}(AA^H) = \text{tr}(A^H A)
+   $
+
+\item 
+$
+\|A\| = \|A\|_{X \rightarrow Y} = \sup_{z \neq 0} \frac{\|Az\|_Y}{\|z\|_X}
+$
+
+\item 
+$
+\|AB\|_F \leq \|A\|_F \|B\|_F
+$
+
+\item $
+\|AB\| \leq \|A\| \|B\|
+$
+
+
+\item PARALLELOGRAM LAW
+
+\[
+\|x + y\|^2_2 = 2 \|x\|^2_2 + 2 \|y\|^2_2 - \|x - y\|^2_2
+\]
+
+\[
+\|x - y\|^2_2 = 2 \|x\|^2_2 + 2 \|y\|^2_2 - \|x + y\|^2_2
+\]
+
+\[
+(x - y)^2 = 2x^2 + 2y^2 - (x + y)^2
+\]
+
+\[ \|x + y\|_2^2 = \|x\|_2^2 + \|y\|_2^2 + 2 \langle x, y \rangle \]
+
+\[ \|x - y\|_2^2 = \|x\|_2^2 + \|y\|_2^2 - 2 \langle x, y \rangle \]
+
+
+\end{itemize}
+
+
+
+\section{SVD}
+
+\begin{itemize}
+
+\item SVD
+
+\[
+A = \sum_{i=1}^r \sigma_i u_i v_i^T
+\]
+\[
+A = U \Sigma V^T
+\]
+\[
+U^T U = I
+\]
+\[
+U U^T = I
+\]
+\[
+V^T V = I
+\]
+\[
+V V^T = I
+\]
+\[
+\Sigma \Sigma^{-1} = I
+\]
+\[
+\Sigma^{-1} \Sigma = I
+\]
+
+\item 
+$
+\sigma_1(A) = \|Av_1\|_2
+$
+
+
+\item 
+$
+v_k = \arg \max_{\|x\|_2=1,\; \langle v_1,v_2,\ldots,v_{k-1} \rangle=0} \|Av\|_2
+$
+
+\item    $
+    \| A^{(i)} \|_2^2 = \sum_{k=1}^{r} | \langle A^{(i)}, v_k \rangle |^2
+    $
+
+\item 
+$
+    \sum_{i \in I} \| A^{(i)} \|_2^2 = \sum_{k=1}^{r} \| A_v k \|_2^2 = \sum_{k=1}^{r} \sigma_k(A)^2
+$
+
+\item
+   $
+    \| A \|_F^2 = \sum_{i \in I} \sum_{j \in J} | A_{ij} |^2 = \sum_{k=1}^{r} \sigma_k(A)^2
+  $
+
+\item 
+    $
+    \| A \|_F = \sqrt{ \sum_{k=1}^{r} \sigma_k(A)^2 }
+   $
+
+\item 
+$
+\|A\| = \sigma_1(A) = \max_{\|v\|_2=1} \|Av\|_2
+$
+
+\item Frobenius Norm ($p = 2$):
+        \[
+        \|A\|_F = \left( \sum_{k=1}^r \sigma_k(A)^2 \right)^{1/2}
+        \]
+
+        \item Spectral Norm ($p = \infty$):
+        \[
+        \|A\|_\infty = \max_{k=1,\ldots,r} \sigma_k(A) = \sigma_1(A)
+        \]
+
+        \item Nuclear Norm ($p = 1$):
+        \[
+        \|A\|_* = \|A\|_1 = \sum_{k=1}^r \sigma_k(A)
+        \]
+
+\item A matrix $A$ is positive semi-definite if:
+        \[
+        \langle x, Ax \rangle \geq 0 \quad \forall x \in \mathbb{R}^m.
+        \]
+
+ \item A matrix $A$ is positive definite if:
+        \[
+        \langle x, Ax \rangle > 0 \quad \forall x \in \mathbb{R}^m, \, x \neq 0.
+        \]
+
+
+
+\item 
+   $
+    A^+ = V \Sigma^{-1} U^H
+   $
+
+
+\item 
+$
+A^+ = \sum_{k=1}^{r} \sigma_k^{-1} v_k u_k^H
+$
+
+
+\item if $(m > n)$ (long matrix)
+
+    $
+    A^+ = (A^H A)^{-1} A^H
+    $ and $x = A^+y = (A^H A)^{-1} A^Hy$
+
+\item if $(m < n)$ (fat matrix)
+
+$
+ A^+ = A^H(AA^H)^{-1}
+$ and $x = A^+y = A^H(AA^H)^{-1}y$
+
+\item Weyl's Bounds
+
+\[
+\lambda_k(A) + \lambda_n(E) \leq \lambda_k(A + E) \leq \lambda_k(A) + \lambda_1(E)
+\]
+
+\[
+\lvert \sigma_k(A + E) - \sigma_k(A) \rvert \leq \lVert E \rVert
+\]
+
+
+\item Mirsky's Bounds
+\[
+\sum_{k=1}^{n} \lvert \sigma_k(A + E) - \sigma_k(A) \rvert^2 \leq \lVert E \rVert_F^2
+\]
+
+\end{itemize}
+
+
+\section{Probability}
+
+\begin{itemize}
+
+\item Random variable X has PDF 
+
+    \[
+    P(a < X \leq b) = \int_a^b \varphi(t) \, dt \quad \text{for all } a < b \in \mathbb{R}
+    \]
+
+\item \textbf{Relationship with Distribution Function:}
+\[
+\varphi(t) = \frac{d}{dt} F(t)
+\]
+where the cumulative distribution function (CDF) \( F(x) \) is defined as:
+\[
+F(x) = P(X \leq x) = \int_{-\infty}^{x} \frac{d}{dt} F(t) \, dt
+\]
+
+
+\item Expectation (Mean)
+
+ \[
+    E[X] = \int_{\Omega} X(\omega) \, dP(\omega)
+    \]
+
+\[
+        E[g(X)] = \int_{-\infty}^{\infty} g(t) \varphi(t) \, dt
+        \]
+
+    \[
+    E[X] = \int_{-\infty}^{\infty} t \varphi(t) \, dt
+    \]
+
+\item Moments
+    \[
+    E[X^p] \quad \text{for } p > 0
+    \]
+\item Absolute Moments
+    \[
+    E[|X|^p] \quad \text{for } p > 0
+    \]
+
+\item variance
+    \[
+    Var(X) = E[(X - E[X])^2] = E[X^2] - (E[X])^2
+    \]
+
+\item LP Norm:
+\[
+\|X\|_p = (E[|X|^p])^{1/p} \quad \text{for } 1 \leq p < \infty
+\]
+
+\item Inequality:
+\[
+\|X + Y\|_p \leq \|X\|_p + \|Y\|_p
+\]
+
+\item Hölder's Inequality
+
+    \[
+    |E[XY]| \leq \|X\|_p \|Y\|_q
+    \]
+
+\item Convergence of Random Variables
+
+\[
+\lim_{n \to \infty} X_n(\omega) = X(\omega) \quad \text{for all } \omega \in \Omega
+\]
+
+\item Lebesgue's Dominated Convergence Theorem (LDCT)
+
+\[
+\lim_{n \to \infty} E[X_n] = E\left[\lim_{n \to \infty} X_n\right] = E[X]
+\]
+
+\item Fubini's Theorem
+\[
+\int_A \left( \int_B f(x, y) d\mu(y) \right) d\nu(x) = \int_B \left( \int_A f(x, y) d\nu(x) \right) d\mu(y)
+\]
+
+\item Absolute Moments
+
+    \[
+    E[|X|^p] = p \int_0^{\infty} P(|X| \ge t) t^{p-1} dt
+    \]
+
+\item Cavalieri's Formula for Expectation
+
+    \[
+    E[X] = \int_0^{\infty} P(X \ge t) dt - \int_0^{\infty} P(X \le -t) dt
+    \]
+
+\item Markov's Inequality
+
+    \[
+    P(|X| \ge t) \le \frac{E[|X|]}{t}
+    \]
+
+\item Generalized Markov Inequality
+
+    \[
+    P(|X| \ge t) = P(|X|^p \ge t^p) \le \frac{E[|X|^p]}{t^p} \quad \text{for all } t > 0
+    \]
+
+\item Chebyshev Inequality
+
+    \[
+    P(|X - E[X]| \ge t) \le \frac{Var(X)}{t^2} \quad \text{for all } t > 0
+    \]
+
+\item Laplace Transform (Moment Generating Function)
+
+    \[
+    M_X(\theta) = E[e^{\theta X}]
+    \]
+
+\item Normal Distribution (Gaussian Distribution)
+
+  \[
+    \psi(t) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(t - \mu)^2}{2\sigma^2}\right)
+    \]
+\item \(\mu\): Mean
+\item \(\sigma^2\): Variance
+ \item Mean: \(E[X] = \mu\)
+        \item Variance: \(\text{Var}(X) = \sigma^2\)
+
+        \[
+    X \sim N(\mu, \sigma^2)
+    \]
+
+\item \textbf{Expectation:}
+\[
+\mathbb{E}[X] = \frac{1}{N} \sum_{i=1}^{N} X_i
+\]
+
+\item \textbf{Variance:}
+\[
+\text{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+\]
+Alternatively,
+\[
+\text{Var}(X) = \frac{1}{N} \sum_{i=1}^{N} X_i^2 - \left( \frac{1}{N} \sum_{i=1}^{N} X_i \right)^2
+\]
+
+\item \textbf{Standard Deviation:}
+\[
+\sigma_X = \sqrt{\text{Var}(X)}
+\]
+
+  \item \textbf{for normal distribution PDF:}
+    \[
+    \phi(t) = \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{t^2}{2}\right)
+    \]
+
+\item 
+    $
+    P(X_1 \leq t_1, \ldots, X_n \leq t_n) = \prod_{\ell=1}^{n} P(X_\ell \leq t_\ell)
+    $
+
+\item 
+
+    $
+    E\left[ \prod_{\ell=1}^{n} X_\ell \right] = \prod_{\ell=1}^{n} E[X_\ell]
+    $
+
+\item join PDF
+
+$
+    \varphi(t_1, \ldots, t_n) = \varphi_1(t_1) \cdot \varphi_2(t_2) \cdots \varphi_n(t_n)
+  $
+
+\item PDF of X+Y
+
+$
+    \varphi_{X+Y}(t) = (\varphi_X * \varphi_Y)(t) = \int_{-\infty}^{\infty} \varphi_X(u) \varphi_Y(t - u) \, du
+$
+
+\item Fubini's Theorem for Expectations
+
+    \[
+    E[|f_1(X)|] = E[|f_2(Y)|] = E[|f(X,Y)|]
+    \]
+
+\item Multivariate Normal Distribution (Gaussian Vector)
+
+    \[
+    X = A g + \mu
+    \]
+
+    \[
+    \Sigma = A A^T = E[(X - \mu)(X - \mu)^T]
+    \]
+
+        \[
+    \psi(x) = \frac{1}{(2\pi)^{n/2} \sqrt{\det(\Sigma)}} \exp\left(-\frac{1}{2} (x - \mu)^T \Sigma^{-1} (x - \mu)\right)
+    \]
+
+
+\item Jensen's Inequality
+
+\begin{itemize}
+    \item \textbf{For Convex Functions:} 
+    \[
+    f(E[X]) \leq E[f(X)]
+    \]
+    \item \textbf{Convex Function:} \( f(\lambda x + (1 - \lambda)y) \leq \lambda f(x) + (1 - \lambda)f(y) \) for all \( x, y \in \mathbb{R}^n \) and \( \lambda \in [0, 1]. \)
+
+    \item \textbf{For Concave Functions:} 
+    \[
+    E[f(X)] \leq f(E[X])
+    \]
+    \item \textbf{Concave Function:} \( f(\lambda x + (1 - \lambda)y) \geq \lambda f(x) + (1 - \lambda)f(y) \) for all \( x, y \in \mathbb{R}^n \) and \( \lambda \in [0, 1]. \)
+\end{itemize}
+
+
+\item Moment Generating Function (MGF)
+
+\[
+M_X(\theta) = E[\exp(\theta X)]
+\]
+
+\item Cumulant Generating Function (CGF)
+
+\[
+K_X(\theta) = \ln(E[\exp(\theta X)])
+\]
+
+\item Cramer's Theorm
+
+\[
+P\left(\sum_{l=1}^{M} X_\ell \geq t\right) \leq \exp\left(\inf_{\theta > 0}\left\{-\theta t + \sum_{l=1}^{M} C_X(\theta)\right\}\right)
+\]
+
+\item Hoeffding's Inequiality
+
+\begin{itemize}
+
+\item One-Sided Bound:
+    \[
+    \mathbb{P}\left(\sum_{\ell=1}^{M} X_\ell \geq t\right) \leq \exp\left(-\frac{t^2}{2\sum_{\ell=1}^{M} B_\ell^2}\right)
+    \]
+
+    \item Two-Sided Bound:
+    \[
+    \mathbb{P}\left(\left|\sum_{\ell=1}^{M} X_\ell\right| \geq t\right) \leq 2 \exp\left(-\frac{t^2}{2\sum_{\ell=1}^{M} B_\ell^2}\right)
+    \]
+
+    \item For a single symmetric Bernoulli random variable, Hoeffding's inequality states:
+
+\[
+\mathbb{P} \left( |X| > t \right) \leq 2 \exp \left( -\frac{2t^2}{(b-a)^2} \right)
+\]
+
+\end{itemize}
+
+\item Bernstein's Inequality
+
+\begin{itemize}[leftmargin=*]
+    \item For all $t > 0$:
+    \[
+    P\left( \left| \sum_{\ell=1}^{M} X_\ell \right| \geq t \right) \leq 2 \exp\left( -\frac{t^2}{2(\sigma^2 + Rt)} \right)
+    \]
+    \item Where $\sigma^2 = \sum_{t=1}^{M} \sigma_t^2$.
+\end{itemize}
+
+\item Johnson-Lindenstrauss Lemma 
+
+
+
+\[
+k \geq \beta \epsilon^{-2} \log(2n)
+\]
+
+       \[
+        (1 - \epsilon) \|v - w\|^2_2 \leq \|f(v) - f(w)\|^2_2 \leq (1 + \epsilon) \|v - w\|^2_2 \quad \text{for all } v, w \in P
+         \]
+
+
+
+\[ |\langle f(\mathbf{v}), f(\mathbf{w}) \rangle| \leq |\langle \mathbf{v}, \mathbf{w} \rangle (1 + \epsilon)| \]
+
+
+\end{itemize}
+
+\section{Optimization}
+
+\begin{itemize}
+
+\item To find global minimized using gradient decent, following conditions needed:
+
+\begin{itemize}
+   \item \textbf{Convexity}: \( f \) is convex if \(\forall \mathbf{x}, \mathbf{y} \in \mathbb{R}^n \) and \( \lambda \in [0,1] \):
+   \[
+   f(\lambda \mathbf{x} + (1 - \lambda) \mathbf{y}) \leq \lambda f(\mathbf{x}) + (1 - \lambda) f(\mathbf{y}).
+   \]
+
+\item \textbf{Lipschitz Continuity of Gradient}: There exists \( L > 0 \) such that \(\forall \mathbf{x}, \mathbf{y} \in \mathbb{R}^n \):
+   \[
+   \| \nabla f(\mathbf{x}) - \nabla f(\mathbf{y}) \| \leq L \| \mathbf{x} - \mathbf{y} \|.
+   \]
+
+\item \textbf{Step Size}: The step size \( \alpha_k \) satisfies:
+   \[
+   0 < \alpha < \frac{2}{L} \quad 
+   \]
+\end{itemize}
+
+
+
+
+
+\end{itemize}
+
+
+
+
+\end{document}
