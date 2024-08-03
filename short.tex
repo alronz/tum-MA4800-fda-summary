@@ -111,6 +111,88 @@ $
 \[ \|x - y\|_2^2 = \|x\|_2^2 + \|y\|_2^2 - 2 \langle x, y \rangle \]
 
 
+\item Taylor Expansions
+\begin{itemize}
+
+\item First-Order:
+\[
+f(x_0 + t) = f(x_0) + f'(x_0) \cdot t + o(t), \quad \text{as } t \to 0
+\]
+\[
+\lim_{t \to 0} \frac{o(t)}{t} = 0
+\]
+
+\item Second-Order Taylor
+   \[
+        f(x_0 + t) = f(x_0) + f'(x_0) \cdot t + \frac{1}{2} f''(x_0) \cdot t^2 + o(t^2), \quad \text{as } t \to 0
+        \]
+    \[
+        \lim_{t \to 0} \frac{o(t^2)}{t^2} = 0
+        \]
+\end{itemize}
+
+\item Taylor Expansion with Mean Value:
+\begin{itemize}
+    \item \textbf{First-Order:}
+    \[
+    f(x_0 + t) = f(x_0) + f'(z) \cdot t, \quad z \in (x_0, x_0 + t)
+    \]
+
+    \item \textbf{Second-Order }
+    \[
+    f(x_0 + t) = f(x_0) + f'(x_0) \cdot t + \frac{1}{2} f''(z) \cdot t^2, \quad z \in (x_0, x_0 + t)
+    \]
+
+    \item Multidimentional 
+    \[
+f(x_0 + ty) = f(x_0) + \nabla f(x_0) \cdot y + \frac{1}{2} t^2 y^T \nabla^2 f(x_0) y + o(t^2), \quad \text{as } t \to 0
+\]
+\end{itemize}
+
+\item  $
+    P_V = V V^T \in \mathbb{R}^{d \times d}
+    $
+\item   $
+    P_V \cdot x = P_V(x)
+    $
+\item $
+(f * g)(t) = \int_{-\infty}^{\infty} f(u)g(t - u) \, du
+$
+
+\item $
+\phi_{X+Y}(t) = \left( \phi_X * \phi_Y \right)(t) = \int_{-\infty}^{\infty} \phi_X(u)\phi_Y(t - u) \, du
+$
+
+
+
+\item Quadratic Function: $
+f(x) = x^T A x + \langle b, x \rangle + c
+$ :
+
+\begin{itemize}
+    \item $
+\nabla f(x) = Ax + A^T x + b
+$
+(For symmetric \(A\): \(\nabla f(x) = 2Ax + b\))
+\item $
+\nabla^2 f(x) = A + A^T
+$
+(For symmetric \(A\): \(\nabla^2 f(x) = 2A\))
+
+\end{itemize}
+
+\item $
+\nabla \|x\|_2 = \frac{x}{\|x\|_2} \text{ for } x \neq 0.
+$
+
+\item $
+\nabla \|x\|^2_2 = 2x.
+$
+
+\item $
+B^m = \sum_{k=1}^{r} \sigma_k^{2m} u_k u_k^T
+$
+
 \end{itemize}
 
 
@@ -248,6 +330,10 @@ $ and $x = A^+y = A^H(AA^H)^{-1}y$
 \sum_{k=1}^{n} \lvert \sigma_k(A + E) - \sigma_k(A) \rvert^2 \leq \lVert E \rVert_F^2
 \]
 
+\item   $
+    \cos \theta(V,W) = \frac{V^T W}{\lVert V \rVert_2 \lVert W \rVert_2}
+    $
+
 \end{itemize}
 
 
@@ -338,6 +424,8 @@ F(x) = P(X \leq x) = \int_{-\infty}^{x} \frac{d}{dt} F(t) \, dt
     E[|X|^p] = p \int_0^{\infty} P(|X| \ge t) t^{p-1} dt
     \]
 
+ \item $\left( \mathbb{E}|X+Y| \right)^{p} \leq \left( \mathbb{E}|X|^{p} \right) + \left( \mathbb{E}|Y|^{p} \right)$
+
 \item Cavalieri's Formula for Expectation
 
     \[
@@ -370,9 +458,13 @@ F(x) = P(X \leq x) = \int_{-\infty}^{x} \frac{d}{dt} F(t) \, dt
 
 \item Normal Distribution (Gaussian Distribution)
 
+\begin{itemize}
+    \item 
   \[
     \psi(t) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(t - \mu)^2}{2\sigma^2}\right)
     \]
+
+     \item MGF: $M_X(\theta) = \exp\left(\mu \theta + \frac{1}{2} \sigma^2 \theta^2\right)$
 \item \(\mu\): Mean
 \item \(\sigma^2\): Variance
  \item Mean: \(E[X] = \mu\)
@@ -400,11 +492,17 @@ Alternatively,
 \[
 \sigma_X = \sqrt{\text{Var}(X)}
 \]
+\end{itemize}
 
   \item \textbf{for normal distribution PDF:}
-    \[
+
+\begin{itemize}
+\item  $
     \phi(t) = \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{t^2}{2}\right)
-    \]
+    $
+      \item MGF: $M_X(\theta) = \exp\left(\frac{1}{2} \theta^2\right)$
+\end{itemize}
+   
 
 \item 
     $
@@ -561,7 +659,335 @@ k \geq \beta \epsilon^{-2} \log(2n)
 
 
 
+ \item \textbf{Convex Set:} A set \( K \subseteq \mathbb{R}^N \) is convex if for all \( x, z \in K \) and \( t \in [0, 1]: \quad t \cdot x + (1 - t) \cdot z \in K \)
 
+ \item \textbf{Convex Hull:} For \( T \subseteq \mathbb{R}^N \), the convex hull \( \text{conv}(T) \) is the smallest convex set containing \( T \).
+
+
+\item \textbf{Cones:} A set $K \subseteq \mathbb{R}^N$ is a cone if for all $x \in K$ and all $t \geq 0$, $t \cdot x \in K$.
+
+
+\item \textbf{Convex Cone:} A set $K$ is a convex cone if it is a cone and convex. For all $x,z \in K$ and $s, t \geq 0$, $s \cdot x + t \cdot z \in K$.
+
+\item \textbf{Dual Cones:} For a cone $K \subseteq \mathbb{R}^N$, the dual cone $K^*$ is:
+    \[
+    K^* = \{z \in \mathbb{R}^N : \langle x, z \rangle \geq 0 \text{ for all } x \in K\}
+    \]
+
+\item Bidual Cone: If $K$ is a closed cone, then $(K^*)^* = K$.
+
+\item Polar Cones:
+For a cone \( K \subseteq \mathbb{R}^N \), the polar cone \( K^\circ \) is:
+\[
+K^\circ = \{ z \in \mathbb{R}^N : \langle x, z \rangle \leq 0 \text{ for all } x \in K \}
+\]
+
+\item \( K^\circ = -K^* \), where \( K^* \) is the dual cone.
+
+
+\item Geometrical Hahn-Banach Theorem
+
+For convex sets \( K_1, K_2 \subseteq \mathbb{R}^N \) with empty interior intersection, there exists a vector \( w \in \mathbb{R}^N \) and a scalar \( \lambda \) such that:
+\[
+K_1 \subseteq \{ x \in \mathbb{R}^N : \langle x, w \rangle \leq \lambda \}
+\]
+\[
+K_2 \subseteq \{ x \in \mathbb{R}^N : \langle x, w \rangle \geq \lambda \}
+\]
+
+
+\item Defined as $\text{dom}(F) = \{x \in \mathbb{R}^N : F(x) \neq \infty\}$.
+
+\item A function is proper if $\text{dom}(F) \neq \emptyset$.
+
+\item Convex Functions
+
+\( F : \mathbb{R}^N \to (-\infty, \infty) \) is convex if for all \( x, z \in \mathbb{R}^N \) and \( t \in [0, 1] \):
+\[
+F(tx + (1 - t)z) \leq tF(x) + (1 - t)F(z)
+\]
+
+\item Strictly Convex Functions
+\( F \) is strictly convex if for all \( x \neq z \) and \( t \in (0,1) \):
+\[
+F(tx + (1 - t)z) < tF(x) + (1 - t)F(z)
+\]
+
+\item Strongly Convex Functions
+\( F \) is strongly convex with parameter \( \gamma > 0 \) if for all \( x, z \in \mathbb{R}^N \) and \( t \in [0, 1] \):
+\[
+F(tx + (1 - t)z) \leq tF(x) + (1 - t)F(z) - \frac{\gamma}{2}(1 - t)\|x - z\|_2^2
+\]
+
+\item 
+The epigraph of $F$ is $\operatorname{epi}(F) = \{(x, r) : r \geq F(x)\}$.
+
+\begin{itemize}
+        \item $F$ is convex if and only if $\operatorname{epi}(F)$ is a convex set.
+        \item For $(x_1, r_1), (x_2, r_2) \in \operatorname{epi}(F)$ and $t \in [0, 1]$:
+        \[
+        (tx_1 + (1 - t)x_2, tr_1 + (1 - t)r_2) \in \operatorname{epi}(F)
+        \]
+    \end{itemize}
+
+\item A differentiable function $F : \mathbb{R}^N \rightarrow \mathbb{R}$ is convex if and only if:
+    \[
+    F(x) \geq F(y) + \nabla F(y)^T (x - y)
+    \]
+
+ \item $F$ is strongly convex with parameter $\gamma > 0$ if and only if:
+    \[
+    F(x) \geq F(y) + \nabla F(y)^T (x - y) + \frac{\gamma}{2} \| x - y \|^2
+    \]
+
+\item A twice differentiable function $F$ is convex if and only if its Hessian $\nabla^2 F(x)$ is positive semi-definite:
+    \[
+    \nabla^2 F(x) \succeq 0
+    \]
+
+\item to check convexity:
+
+\begin{itemize}
+    \item Convexity can be checked using the gradient. If the tangent line (or hyperplane) at any point $y$ lies below the function, $F$ is convex. Condition from above.
+    \item \textbf{Strong Convexity:} Strong convexity includes an additional quadratic term that provides a lower bound on the curvature of $F$.
+    \item \textbf{Hessian Condition:} For twice differentiable functions, convexity can be checked by ensuring the Hessian matrix is positive semi-definite at every point.
+    
+\end{itemize}
+
+    \item Let $F, G$ be convex functions on $\mathbb{R}^N$. Then, for $\alpha, \beta \geq 0$ the function $\alpha F + \beta G$ is convex.
+    \item Let $F : \mathbb{R} \rightarrow \mathbb{R}$ be convex and nondecreasing, and $G : \mathbb{R}^N \rightarrow \mathbb{R}$ be convex. Then $H(x) = F(G(x))$ is convex.
+
+\item Lower Semicontinuity:
+ \[
+    \liminf_{j \to \infty} F(x_j) \geq F(x)
+    \]
+
+ \item \textbf{Global Minimum:} A point \( x \in \mathbb{R}^N \) is a global minimum of \( F \) if:
+    \[
+    F(x) \leq F(y) \quad \text{for all } y \in \mathbb{R}^N
+    \]
+    \item \textbf{Local Minimum:} A point \( x \in \mathbb{R}^N \) is a local minimum of \( F \) if there exists \( \epsilon > 0 \) such that:
+    \[
+    F(x) \leq F(y) \quad \text{for all } y \text{ satisfying } \| x - y \|_2 \leq \epsilon
+    \]
+
+ \item For a convex function \( F \), any local minimum is also a global minimum.
+
+  \item The set of minima of a convex function \( F \) is convex.
+
+ \item If \( F \) is strictly convex, the minimum is unique.
+
+ \item For extreme point \( x, \ x = ty + (1-t)z \) with \( t \in (0,1) \) implies \( x = y = z \).
+
+
+ \item Convex Conjugate (\( F^* \) is always a convex function, even if \( F \) is not.)
+  \[
+    F^*(y) := \sup_{x \in \mathbb{R}^N} \{ \langle x, y \rangle - F(x) \}
+    \]
+
+\item Fenchel-Young Inequality: For all \( x, y \in \mathbb{R}^N \):
+    \[
+    \langle x, y \rangle \leq F(x) + F^*(y)
+    \]
+
+\item Biconjugate:
+\begin{itemize}
+        \item \( F^{**} \) is the largest lower semicontinuous convex function satisfying \( F^{**}(x) \leq F(x) \).
+        \item If \( F \) is convex and lower semicontinuous, then \( F = F^{**} \).
+
+         \item Scaling Argument:  For \( \tau \neq 0 \):
+        \[
+        (F_\tau)^*(y) = F^*\left(\frac{y}{\tau}\right)
+        \]
+
+        \item Scaling Function: For \( \tau > 0 \):
+        \[
+        (\tau F)^*(y) = \tau F^*\left(\frac{y}{\tau}\right)
+        \]
+
+        \item Translation: For \( z \in \mathbb{R}^N \):
+        \[
+        (F_z)^*(y) = \langle z, y \rangle + F^*(y)
+        \]
+    \end{itemize}
+
+
+
+ \item \textbf{Subdifferential and Subgradients:} For a convex function \( F : \mathbb{R}^N \to \mathbb{R} \) at \( x \in \mathbb{R}^N \),
+    \[
+    \partial F(x) = \{ v \in \mathbb{R}^N : F(z) - F(x) \geq \langle v, z - x \rangle \text{ for all } z \in \mathbb{R}^N \}
+    \]
+
+    \( v \) is a subgradient at \( x \) if it satisfies:
+    \[
+    F(z) - F(x) \geq \langle v, z - x \rangle
+    \]
+
+     The subdifferential \( \partial F(x) \) is always non-empty for a convex function.
+
+      If \( F \) is differentiable at \( x \),
+    \[
+    \partial F(x) = \{ \nabla F(x) \}
+    \]
+
+\item  A vector $x$ is a minimum of a convex function $F$ if and only if:
+    \[
+    0 \in \partial F(x)
+    \]
+
+ \item For a convex lower semicontinuous function $F$:
+        \[
+        x \in \partial F^*(y) \leftarrow \rightarrow y \in \partial F(x)
+        \]
+
+\item Proximal Mapping:
+
+\[
+\text{prox}_F(z) := \arg \min_{x \in \mathbb{R}^N} \left\{ F(x) + \frac{1}{2} \| x - z \|_2^2 \right\}
+\]
+
+The function $x \mapsto F(x) + \frac{1}{2} \| x - z \|_2^2$ is strictly convex, ensuring a unique minimizer.
+
+For a convex function $F : \mathbb{R}^N \rightarrow (-\infty,\infty]$,
+\[
+x = P_F(z) \text{ if and only if } z \in x + \partial F(x)
+\]
+\[
+P_F = (I + \partial F)^{-1}
+\]
+
+\item Moreau's Identity:
+For a lower semicontinuous convex function $F : \mathbb{R}^N \rightarrow (-\infty,\infty]$ and all $z \in \mathbb{R}^N$,
+\[
+P_F(z) + P_{F^*}(z) = z
+\]
+
+\item Nonexpansiveness of Proximal Mappings:
+\[
+\|P_F(z) - P_F(z')\|_2 \leq \|z - z'\|_2 \quad \text{ for all } z, z' \in \mathbb{R}^N.
+\]
+
+\item Lagrange Function:
+\[
+L(x, \xi, \nu) = F_0(x) + \xi^T(Ax - y) + \sum_{l=1}^M \nu_l (F_l(x) - b_l).
+\]
+\begin{itemize}
+    \item \(x \in \mathbb{R}^N\): Decision variables.
+    \item \(\xi \in \mathbb{R}^m\): Lagrange multipliers for equality constraints. \textcolor{red}{ It can take any real values, positive or negative}
+    \item \(\nu \in \mathbb{R}^M\): Lagrange multipliers for inequality constraints (\(\nu_l \geq 0\)).
+\end{itemize}
+
+\item Lagrange Dual Function:
+\[
+H(\xi, \nu) = \inf_{x \in \mathbb{R}^N} L(x, \xi, \nu),
+\]
+
+\begin{itemize}
+     \item \textbf{Concavity:} The dual function $H(\xi, \nu)$ is concave.
+    \item \textbf{Dual Feasible:} $(\xi, \nu)$ is dual feasible if $\xi \in \mathbb{R}^m$ and $\nu \geq 0$.
+    \item \textbf{Dual Optimal:} $(\xi^*, \nu^*)$ maximizes $H(\xi, \nu)$.
+    \item \textbf{Primal-Dual Optimal:} $(x^*, \xi^*, \nu^*)$ where $x^*$ is optimal for the primal problem and $(\xi^*, \nu^*)$ are optimal for the dual problem.
+    \item Weak Duality: \( H(\xi^{*}, \nu^{*}) \leq F_{0}(x^{*}) \)
+    \item Strong Duality: \( H(\xi^{*}, \nu^{*}) = F_{0}(x^{*}) \)
+\end{itemize}
+
+\item Slater's Constraint Qualification Theorem:
+\begin{itemize}
+    \item \textbf{Assumption:} \( F_{0}, F_{1}, \ldots, F_{M} \) are convex functions with \( \text{dom}(F_{0}) = \mathbb{R}^{N} \).
+    \item \textbf{Condition:} There exists \( x \in \mathbb{R}^{N} \) such that:
+    \[
+    Ax = y \quad F_{i}(x) < b_{i}, \quad \forall i \in \{1, \ldots, M\}
+    \]
+    \item \textbf{Conclusion:} If the above conditions hold, then strong duality holds for the optimization problem.
+\end{itemize}
+
+\item Saddle-Point Interpretation:
+\begin{itemize}
+     \item \textbf{Optimal Value:}
+    \[
+    F_{0}(x^{*}) = \inf_{x \in \mathbb{R}^{N}} \sup_{\xi \in \mathbb{R}^{m}} L(x, \xi).
+    \]
+ \item \textbf{Supremum:}
+    \[
+    \sup_{\xi \in \mathbb{R}^m} \inf_{x \in \mathbb{R}^N} L(x, \xi) \leq \inf_{x \in \mathbb{R}^N} \sup_{\xi \in \mathbb{R}^m} L(x, \xi)
+    \]
+     \item \textbf{Strong Duality:}
+    \[
+    \sup_{\xi \in \mathbb{R}^m} \inf_{x \in \mathbb{R}^N} L(x, \xi) = \inf_{x \in \mathbb{R}^N} \sup_{\xi \in \mathbb{R}^m} L(x, \xi)
+    \]
+    \item For a primal-dual optimal pair \((x^*, \xi^*)\):
+\[
+L(x^*, \xi) \leq L(x^*, \xi^*) \leq L(x, \xi^*)
+\]
+    
+\end{itemize}
+
+\item Lipschitz Continuity:
+\begin{itemize}
+    \item Gradient $\nabla f(x)$ is Lipschitz continuous with constant $L$:
+    \[
+    \|\nabla f(x) - \nabla f(y)\|_2 \leq L\|x - y\|_2
+    \]
+    \item If $f$ is twice differentiable:
+    \[
+    \lambda_{\max}(\nabla^2 f(x)) \leq L
+    \]
+        \item A convex function $f$ satisfies:
+    \[
+    f(y) \geq f(x) + \nabla f(x)^{T}(y - x)
+    \] For all $x, y \in \mathbb{R}^{d}$.
+        \item If $\nabla f(x)$ is Lipschitz continuous with constant $L$, then:
+    \[
+    f(y) \leq f(x) + \nabla f(x)^{T}(y - x) + \frac{L}{2}\|y - x\|^{2}_{2}
+    \]
+    \item Convergence of Gradient Descent:
+    \[
+\alpha = \alpha^{(n)} \leq \frac{1}{L}
+\]
+\end{itemize}
+
+\item \textbf{Update Rule:}
+    \begin{equation*}
+    x^{(n+1)} = x^{(n)} - \alpha^{(n)} \nabla f(x^{(n)})
+    \end{equation*}
+
+\item Strong Convexity:
+\begin{itemize}
+    \item \textbf{Gradient Condition:}
+    \[
+    f(y) \geq f(x) + \langle \nabla f(x), y - x \rangle + \frac{\gamma}{2} \|y - x\|^2_2
+    \]
+
+    \item \textbf{Gradient Difference Condition:}
+    \[
+    \langle \nabla f(x) - \nabla f(y), x - y \rangle \geq \gamma \|x - y\|^2_2
+    \]
+
+    \item \textbf{Hessian Condition:}
+    \[
+    w^T \nabla^2 f(x) w \geq \gamma \|w\|^2_2 \quad \forall x, w \in \mathbb{R}^n
+    \]
+    \begin{itemize}
+        \item Alternatively:
+        \[
+        \nabla^2 f(x) \succeq \gamma I
+        \]
+    \end{itemize}
+
+    \item \textbf{Jensen's Inequality for Strongly Convex Functions:}
+    \[
+    f(\lambda x + (1 - \lambda) y) \leq \lambda f(x) + (1 - \lambda) f(y) - \frac{\gamma}{2} \lambda(1 - \lambda) \|x - y\|^2_2
+    \]
+\end{itemize}
+
+\item Gradient Inequality:   $
+    f(x + v) \geq f(x) + \nabla f(x) \cdot v \quad \forall x, v
+    $
+
+ \item Use the spectral norm (largest singular value) to estimate the Lipschitz constant.
+    \[
+    \|\nabla^2 f(x)\| = \text{Largest Singular Value}
+    \]
 
 \end{itemize}
 
