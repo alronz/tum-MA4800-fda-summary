@@ -156,9 +156,12 @@ f(x_0 + t) = f(x_0) + f'(x_0) \cdot t + o(t), \quad \text{as } t \to 0
     \]
 
     \item Multidimentional 
-    \[
-f(x_0 + ty) = f(x_0) + \nabla f(x_0) \cdot y + \frac{1}{2} t^2 y^T \nabla^2 f(x_0) y + o(t^2), \quad \text{as } t \to 0
+\[
+f(x_0 + ty) = f(x_0) + t \nabla f(x_0) \cdot y + \frac{1}{2} t^2 y^T \nabla^2 f(x_0) y + o(t^2), \quad \text{as } t \to 0
 \]
+
+
+
 \end{itemize}
 
 \item  $
@@ -625,6 +628,13 @@ P\left(\sum_{l=1}^{M} X_\ell \geq t\right) \leq \exp\left(\inf_{\theta > 0}\left
     P\left( \left| \sum_{\ell=1}^{M} X_\ell \right| \geq t \right) \leq 2 \exp\left( -\frac{t^2}{2(\sigma^2 + Rt)} \right)
     \]
     \item Where $\sigma^2 = \sum_{t=1}^{M} \sigma_t^2$.
+\item when random variables are Subexponential
+
+\[
+P\left(\left| \|X\|_2^2 - n \right| > t \right) \leq 2 \exp \left( - \frac{(kt)^2}{2(2\beta n + kt)} \right)
+\]
+
+
 \end{itemize}
 
 \item Johnson-Lindenstrauss Lemma 
